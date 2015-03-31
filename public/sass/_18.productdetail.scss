@@ -1,0 +1,238 @@
+.product-detail-page {
+	position: relative;
+	max-width: 1000px;
+	margin: auto;
+	padding: 50px 38px;
+	background-color: #fff;
+	border: 6px solid #000;
+	.row {
+		margin-left: -26px;
+		margin-right: -26px;
+	}
+	[class*="col-"] {
+		padding-left: 26px;
+		padding-right: 26px;
+	}
+	.product-page-slider {
+		.item {
+			img {
+				width: 100%;
+			}
+		}
+		.owl-pagination {
+			margin-top: 20px;
+		}
+	}
+	.mfp-close {
+		color: #000;
+		font-size: 36px;
+	}
+	.categories {
+		margin: 3px 0;
+		min-height: 64px;
+		max-width: 300px;
+		ul {
+			margin: 0;
+			li {
+				margin: 0;
+				padding: 5px 0;
+				display: inline-block;
+				margin-right: 35px;
+				&:before {
+					display: none;
+				}
+				a {
+					font-family: $qs;
+					font-size: 14px;
+					color: #000;
+					&:hover {
+						color: $color;
+					}
+				}
+				.icon {
+					font-size: 10px;
+					margin-right: 8px;
+					color: #666;
+				}
+			}
+		}
+	}
+}
+.mfp-bg {
+	background-color: #fff;
+	opacity: 0.8;
+}
+.product-detail-content {
+	.sizes {
+		margin-top: 20px;
+		float: left;
+		h6 {
+			display: inline-block;
+			font-family: $qs;
+			font-weight: 700;
+			font-size: 18px;
+			color: #262626;
+		}
+		ul {
+			display: inline-block;
+			font-size: 0;
+			margin: 0;
+			margin-left: 8px;
+			li {
+				position: relative;
+				font-family: $qs;
+				display: inline-block;
+				margin: 0;
+				padding: 0;
+				&:before {
+					display: none;
+				}
+				.size {
+					display: inline-block;
+					font-weight: 700;
+					font-size: 18px;
+					color: #262626;
+					width: 30px; height: 30px;
+					border: 2px solid #eee;
+					text-align: center;
+					line-height: 30px;
+					cursor: default;
+					margin: 5px;
+					@include transition(all .3s ease);
+					&:hover {
+						background-color: #262626;
+						border-color: #262626;
+						color: $color;
+					}
+				}
+				.tooltip-size {
+					position: absolute;
+					min-width: 130px;
+					background-color: #262626;
+					padding: 8px 15px;
+					font-size: 16px;
+					opacity: 0;
+					visibility: hidden;
+					color: #fff;
+					top: -20px; left: 50%;
+					@include translate(-50%, -100%);
+					@include transition(all .3s ease);
+					span {
+						color: $color;
+					}
+					&:after {
+						content: '';
+						display: block;
+						position: absolute;
+						width: 0; height: 0;
+						border: 8px solid transparent;
+						border-top-color: #262626;
+						margin: auto;
+						left: 0; right: 0;
+						bottom: -16px;
+					}
+				}
+				.size {
+					&:hover ~ .tooltip-size {
+						opacity: 1;
+						visibility: visible;
+						top: -10px;
+					}
+				}
+			}
+		}
+	}
+	.quantity-wrap {
+		margin-top: 20px;
+		float: right;
+		h6 {
+			display: inline-block;
+			font-family: $qs;
+			font-weight: 700;
+			font-size: 18px;
+			color: #262626;
+		}
+	}
+	.product-foot {
+		clear: both;
+		margin-top: 20px;
+		overflow: hidden;
+		.price {
+			display: inline-block;
+			font-family: $ms;
+			font-size: 32px;
+			color: #000;
+			margin-top: 5px;
+		}
+		.add-to-cart {
+			float: right;
+		}
+	}
+}
+.quantity {
+	display: inline-block;
+	margin-left: 20px;
+	input[type="button"] {
+		width: 16px; height: 16px;
+		@include rounded(50%);
+		border: 1px solid #ccc;
+		color: #ccc;
+		font-family: $qs;
+		font-weight: 700;
+		background: none;
+		line-height: 14px;
+		text-align: center;
+		padding: 0;
+		@include transition(all .2s ease);
+		&:hover {
+			border-color: #000;
+			color: #000;
+		}
+	}
+	.qty {
+		background: none;
+		width: 52px;
+		border: 0;
+		font-family: $ms;
+		font-size: 16px;
+		color: #000;
+		text-align: center;
+	}
+}
+
+.mfp-preloader {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  border: 3px solid rgba(0,0,0,.1);
+  border-top-color: $color;
+  font-size: 0;
+  margin: auto;
+  -webkit-animation: rotatePreloader 1.3s linear infinite;
+  -moz-animation: rotatePreloader 1.3s linear infinite;
+  animation: rotatePreloader 1.3s linear infinite;
+}
+@-webkit-keyframes rotatePreloader {
+  0% {
+    -webkit-transform: rotate(0deg);
+  }
+  100% {
+    -webkit-transform: rotate(360deg);
+  }
+}
+@-moz-keyframes rotatePreloader {
+  0% {
+    -moz-transform: rotate(0deg);
+  }
+  100% {
+    -moz-transform: rotate(360deg);
+  }
+}
+@keyframes rotatePreloader {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}

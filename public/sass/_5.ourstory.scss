@@ -1,0 +1,56 @@
+.story-pager {
+	top: 55px;
+	z-index: 999;
+	.item {
+		overflow: hidden;
+	}
+	a {
+		display: inline-block;
+		float: left;
+		font-family: $ms;
+		font-size: 14px;
+		margin: 0 10px;
+		color: #a6a6a6;
+		border-bottom: 4px solid transparent;
+		&.active {
+			color: #000;
+			border-color: $color;
+		}
+	}
+	.line {
+		position: relative;
+		margin: 0;
+		top: 13px;
+		border-top: 2px dotted #a6a6a6;
+	}
+}
+.story-slider-wrap {
+	.bx-viewport {
+		overflow: visible !important;
+	}
+}
+.story-slider {
+	height: 100%;
+	margin: 0;
+	> li {
+		margin: 0;
+		padding: 0;
+		&:before {
+			display: none;
+		}
+	}
+	.image-wrap {
+		border: 10px solid $color;
+		display: block;
+		img {
+			width: 100%;
+		}
+	}
+	.story-content {
+		margin-top: 130px;
+		p {
+			line-height: 1.9em;
+			letter-spacing: 0.003em;
+		}
+	}
+}

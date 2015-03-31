@@ -1,0 +1,72 @@
+.good-food {
+	.good-food-heading {
+		h2 {
+			position: relative;
+		}
+		p {
+			margin: 25px auto 0;
+			max-width: 700px;
+		}
+		.awe-btn {
+			margin-top: 20px;
+		}
+	}
+}
+.good-food-title {
+	.lg {
+		display: inline-block;
+		margin-left: 40px;
+		margin-right: 40px;
+	}
+	&.style-1 {
+		.icon {
+			font-size: 26px;
+			color: #d4d4d4;
+		}
+	}
+	&.style-2 {
+		.icon {
+			font-size: 26px;
+			color: #a6a6a6;
+			position: relative;
+			top: -10px;
+		}
+		.lg {
+			font-family: $pd;
+			font-style: italic;
+			font-size: 46px;
+			border-bottom: 3px dotted #888;
+			padding-bottom: 15px;
+		}
+	}
+}
+
+.good-food-body {
+	margin-top: 40px;
+}
+.good-item {
+	padding: 20px 35px;
+	max-width: 600px;
+	margin: 0 auto;
+	.item-image-head {
+		display: block;
+		border: 6px solid #eee;
+		margin-bottom: 55px;
+		img {
+			width: 100%;
+		}
+	}
+	.item-body {
+		p {
+			color: #666;
+			margin-top: 8px;
+		}
+	}
+	.item-footer {
+		margin-top: 20px;
+		.awe-btn {
+			padding-left: 35px;
+			padding-right: 35px;
+		}
+	}
+}

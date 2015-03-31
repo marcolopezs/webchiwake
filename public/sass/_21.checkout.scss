@@ -1,0 +1,130 @@
+.chosen-container-single {
+	.chosen-single {
+		display: block;
+		background: none;
+		background: none;
+		border: 0;
+		@include rounded(0);
+		background-color: #eee;
+		height: 40px;
+		line-height: 40px;
+		padding: 0 15px;
+		color: #262626;
+		font-size: 14px;
+		font-weight: 700;
+	}
+}
+
+.your-order {
+	margin-top: 75px;
+	margin-bottom: 75px;
+	ul {
+		margin: 0;
+		li {
+			margin: 0;
+			padding: 0;
+			&:before {
+				display: none;
+			}
+		}
+	}
+	.list-product {
+		padding-bottom: 25px;
+		border-bottom: 4px solid #eee;
+		li {
+			position: relative;
+			overflow: hidden;
+			padding: 12px 10px 12px 0;
+		}
+		.product-image {
+			float: left;
+			margin-right: 15px;
+		}
+		.product-name {
+			font-family: $ms;
+			font-size: 12px;
+			color: #666;
+			a {
+				color: inherit;
+				&:hover {
+					text-decoration: underline;
+				}
+			}
+		}
+		.qty-wrap {
+			font-family: $ms;
+			font-size: 12px;
+			color: #666;
+		}
+		.product-remove {
+			position: absolute;
+			top: 12px; right: 0;
+			a {
+				font-size: 10px;
+				color: #000;
+				&:hover {
+					color: $color;
+				}
+			}
+		}
+	}
+	.quantity {
+		margin-left: 0;
+	}
+	.list-price {
+		padding-top: 12px;
+		padding-bottom: 12px;
+		border-bottom: 4px solid #eee;
+		li {
+			font-family: $ms;
+			font-size: 16px;
+			color: #000;
+			padding: 6px 0;
+		}
+	}
+	.payment {
+		font-family: $ms;
+		font-size: 16px;
+		color: #000;
+		padding: 14px 0;
+	}
+}
+
+.checkout-content {
+	position: relative;
+	padding-left: 100px;
+	margin-top: 75px;
+	margin-bottom: 75px;
+	&:before {
+		content: '';
+		display: block;
+		position: absolute;
+		width: 0; height: 100%;
+		border-left: 3px dotted #d4d4d4;
+		left: 35px; top: 0;
+	}
+	h4 {
+		margin-bottom: 20px;
+	}
+	.form-row {
+		margin-bottom: 0;
+	}
+	label {
+		display: block;
+		font-family: $ms;
+		font-weight: 400;
+		font-size: 14px;
+		color: #000;
+		margin-bottom: 10px;
+		abbr {
+			color: inherit;
+		}
+	}
+	input[type="text"],
+	input[type="number"],
+	input[type="email"],
+	input[type="password"] {
+		width: 100%;
+		margin-bottom: 30px;
+	}
+}

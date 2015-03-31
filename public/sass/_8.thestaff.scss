@@ -1,0 +1,100 @@
+.staff-slider {
+	margin-bottom: 100px;
+	.owl-item {
+		padding-left: 15px;
+		padding-right: 15px;
+	}
+}
+.staff-item {
+	max-width: 260px;
+	margin: 0 auto;
+	padding: 15px;
+	background-color: #fff;
+}
+.staff-heading {
+	position: relative;
+	.image-wrap {
+		img { 
+			width: 100%;
+		}
+	}
+}
+.staff-social {
+	position: absolute;
+	bottom: 10px; right: -15px;
+	a {
+		position: relative;
+		display: block;
+		width: 30px; height: 30px;
+		line-height: 30px;
+		text-align: center;
+		font-size: 16px;
+		color: #fff;
+		overflow: hidden;
+		background-color: #000;
+		margin: 10px;
+		z-index: 9;
+		&:after {
+			content: '';
+			display: block;
+			position: absolute;
+			width: 100%; height: 100%;
+			background-color: $color;
+			top: 0; left: 0;
+			z-index: -1;
+			@include translateX(-100%);
+			@include transition(all .2s ease);
+		}
+		&:hover {
+			&:after {
+				@include translateX(0);
+			}
+		}
+	}
+}
+.staff-info {
+	margin-top: 35px;
+	.staff-work {
+		display: block;
+		font-family: $pd;
+		font-size: 18px;
+		font-style: italic;
+		color: #000;
+	}
+}
+.staff-body {
+	margin-top: 15px;
+}
+
+.we-are-hiring {
+	position: relative;
+	z-index: 9;
+	padding: 28px 32px;
+	margin: 10px 0;
+	border: 1px solid $color;
+	.hiring-title {
+		h4 {
+			position: relative;
+			font-size: 16px;
+			line-height: 40px;
+			background-color: #fff;
+			padding: 0 17px;
+			margin-right: 20px;
+			z-index: 9;
+			white-space: nowrap;
+			&:after {
+				content: '';
+				display: block;
+				position: absolute;
+				width: 0; height: 0;
+				border: solid #fff;
+				border-right-color: transparent;
+				border-width: 20px 10px;
+				top: 0; right: -10px;
+			}
+		}
+	}
+	p {
+		margin: 0 10px;
+	}
+}

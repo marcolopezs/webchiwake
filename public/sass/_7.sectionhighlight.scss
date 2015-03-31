@@ -1,0 +1,20 @@
+.section-highlight {
+	.highlight-content {
+		padding: 45px 0;
+		overflow: hidden;
+		p {
+			display: inline-block;
+			font-family: $ms;
+			font-size: 18px;
+			color: #0E0E0E;
+			margin: 0;
+		}
+	}
+	.links {
+		text-align: right;
+		[class*="-link"] {
+			display: inline-block;
+			margin-right: 15px;
+		}
+	}
+}
