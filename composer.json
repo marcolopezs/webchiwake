@@ -4,11 +4,15 @@
 	"keywords": ["framework", "laravel"],
 	"license": "MIT",
 	"require": {
-		"laravel/framework": "4.2.*"
+		"laravel/framework": "4.2.*",
+        "mews/phpthumb": "dev-master"
 	},
+    "require-dev": {
+        "fzaninotto/faker": "1.5.*@dev"
+    },
 	"autoload": {
         "psr-4": {
-            "Chiwake\\": "Chiwake/"
+            "Chiwake\\": "app/Chiwake"
         },
 		"classmap": [
 			"app/commands",
