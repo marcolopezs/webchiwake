@@ -58,6 +58,12 @@
         }
 
         /*==============================
+         MENU
+         ==============================*/
+        $(".tabs-menu .container .nav-tabs li:first-child").addClass('active');
+        $(".tab-menu-content div:first-child").addClass('in').addClass('active');
+
+        /*==============================
             Scroll To and popup
         ==============================*/
         $(".scroll-to-menu .awe-btn").on('click', function(){

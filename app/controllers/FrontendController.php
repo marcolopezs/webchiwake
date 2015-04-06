@@ -1,5 +1,8 @@
 <?php
 
+use Chiwake\Entities\Menu;
+use Chiwake\Entities\MenuCategory;
+
 class FrontendController extends \BaseController {
 
 	/**
@@ -19,7 +22,10 @@ class FrontendController extends \BaseController {
 
     public function menu()
     {
-        return View::make('frontend.menu');
+        $menus_categories = MenuCategory::wherePublicar(1)->orderBy('id','asc')->get();
+        $menus = Menu::all();
+
+        return View::make('frontend.menu', compact('menus_categories', 'menus'));
     }
 
     public function reservacion()
