@@ -43,7 +43,7 @@ class AdminConfigsController extends \BaseController {
 	{
         $config = $this->configurationRepo->findOrFail($id);
 
-        $data = Input::only(['titulo','dominio','descripcion','keywords','imagen','timezone']);
+        $data = Input::only(['titulo','dominio','descripcion','keywords','imagen','google_analytics']);
 
         $validator = Validator::make($data, $this->rules);
 
@@ -65,7 +65,6 @@ class AdminConfigsController extends \BaseController {
 
             //GUARDAR DATOS
             $config->icon = $imagen;
-            $config->timezone_id = $timezone;
             $config->fill($data);
             $config->save();
 

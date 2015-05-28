@@ -72,29 +72,6 @@ class CreateUsersTable extends Migration {
             $table->softDeletes(); //deleted_at
         });
 
-
-        /* PAGINA */
-
-        Schema::create('pages', function (Blueprint $table) {
-            $table->increments('id');
-
-            $table->string('titulo');
-            $table->string('slug_url');
-            $table->text('contenido');
-            $table->string('imagen');
-            $table->string('imagen_carpeta');
-
-            $table->boolean('publicar')->default(false);
-
-            $table->integer('user_id')->unsigned()->nullable();
-            $table->foreign('user_id')->references('id')->on('users');
-
-            $table->timestamp('published_at');
-            $table->timestamps(); //created_at, update_at
-            $table->softDeletes(); //deleted_at
-        });
-
-
         /* CONFIGURACION */
 
         Schema::create('configurations', function(Blueprint $table)
@@ -105,6 +82,7 @@ class CreateUsersTable extends Migration {
             $table->string('dominio');
             $table->string('keywords');
             $table->string('descripcion');
+            $table->text('google_analytics');
             $table->string('icon');
 
             $table->timestamps();

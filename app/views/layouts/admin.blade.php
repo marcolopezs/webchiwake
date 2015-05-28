@@ -93,7 +93,7 @@
                                 <li {{ (Request::is('administrador/menus') ? 'class="active"' : '') }}>
                                     <a href="{{ route('administrador.menus.index') }}">
                                         <i class="fa fa-angle-double-right"></i>
-                                        Todas los menús
+                                        Todos los menús
                                     </a>
                                 </li>
                                 <li {{ (Request::is('administrador/menus/create') ? 'class="active"' : '') }}>
@@ -106,44 +106,6 @@
                                     <a href="{{ route('administrador.menus_categories.index') }}">
                                         <i class="fa fa-angle-double-right"></i>
                                         Categorías
-                                    </a>
-                                </li>
-                            </ul>
-                        </li>
-
-                        <li {{ (Request::is('administrador/pages') || Request::is('administrador/pages/*') ? 'class="active"' : '') }}>
-                            <a href="{{ route('administrador.pages.index') }}">
-                                <i class="livicon" data-name="doc-portrait" data-size="18" data-c="#418BCA" data-hc="#418BCA" data-loop="true"></i>
-                                <span class="title">Paginas</span>
-                                <span class="fa arrow"></span>
-                            </a>
-                            <ul class="sub-menu">
-                                <li {{ (Request::is('administrador/pages') ? 'class="active"' : '') }}>
-                                    <a href="{{ route('administrador.pages.index') }}">
-                                        <i class="fa fa-angle-double-right"></i>
-                                        Todas las páginas
-                                    </a>
-                                </li>
-                                <li {{ (Request::is('administrador/pages/create') ? 'class="active"' : '') }}>
-                                    <a href="{{ route('administrador.pages.create') }}">
-                                        <i class="fa fa-angle-double-right"></i>
-                                        Nueva página
-                                    </a>
-                                </li>
-                            </ul>
-                        </li>
-
-                        <li {{ (Request::is('administrador/menu') || Request::is('administrador/menu/*') ? 'class="active"' : '') }}>
-                            <a href="#">
-                                <i class="livicon" data-name="brush" data-size="18" data-c="#6CC66C" data-hc="#6CC66C" data-loop="true"></i>
-                                <span class="title">Apariencia</span>
-                                <span class="fa arrow"></span>
-                            </a>
-                            <ul class="sub-menu">
-                                <li {{ (Request::is('administrador/menu') || Request::is('administrador/menu/*') ? 'class="active"' : '') }}>
-                                    <a href="{{ route('administrador.menu.index') }}">
-                                        <i class="fa fa-angle-double-right"></i>
-                                        Menú
                                     </a>
                                 </li>
                             </ul>

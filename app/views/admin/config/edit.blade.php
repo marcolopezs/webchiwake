@@ -71,6 +71,14 @@ Editar registro
                             </div>
                         </div>
 
+                        <div class="form-group @if($errors->has('google_analytics')) has-error @endif">
+                            {{ Form::label('google_analytics', 'Google Analytics', ['class' => 'col-md-3 control-label']) }}
+                            <div class="col-md-9">
+                                {{ Form::textarea('google_analytics', null, ['class' => 'form-control', 'rows' => '3']) }}
+                                {{ $errors->first('google_analytics', '<span class="help-block">:message</span>') }}
+                            </div>
+                        </div>
+
                         <div class="form-group @if($errors->has('imagen')) has-error @endif">
                             {{ Form::label('imagen_actual', 'Icono actual', ['class' => 'col-md-3 control-label']) }}
                             <div class="col-md-9">

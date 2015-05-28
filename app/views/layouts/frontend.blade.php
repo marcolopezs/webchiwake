@@ -11,24 +11,24 @@
     <title>Chiwake</title>
 
     <!-- GOOGLE FONT -->
-    <link href='http://fonts.googleapis.com/css?family=Playfair+Display:400,400italic' rel='stylesheet' type='text/css'>
-    <link href='http://fonts.googleapis.com/css?family=Montserrat' rel='stylesheet' type='text/css'>
-    <link href='http://fonts.googleapis.com/css?family=Quattrocento+Sans:400,400italic,700,700italic' rel='stylesheet' type='text/css'>
+    {{ HTML::style('http://fonts.googleapis.com/css?family=Playfair+Display:400,400italic') }}
+    {{ HTML::style('http://fonts.googleapis.com/css?family=Montserrat') }}
+    {{ HTML::style('http://fonts.googleapis.com/css?family=Quattrocento+Sans:400,400italic,700,700italic') }}
 
     <!-- CSS LIBRARY -->
-    <link rel="stylesheet" type="text/css" href="css/lib/bootstrap.min.css">
-    <link rel="stylesheet" type="text/css" href="css/lib/owl.carousel.css">
-    <link rel="stylesheet" type="text/css" href="css/lib/font-awesome.min.css">
+    {{ HTML::style('css/lib/bootstrap.min.css') }}
+    {{ HTML::style('css/lib/owl.carousel.css') }}
+    {{ HTML::style('css/lib/font-awesome.min.css') }}
 
     <!-- AWE FONT -->
-    <link rel="stylesheet" type="text/css" href="css/awe-fonts.css">
+    {{ HTML::style('css/awe-fonts.css') }}
 
     <!-- PAGE STYLE -->
-    <link rel="stylesheet" type="text/css" href="css/style.css">
+    {{ HTML::style('css/style.css') }}
 
     <!--[if lt IE 9]>
-        <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
-        <script src="http://css3-mediaqueries-js.googlecode.com/svn/trunk/css3-mediaqueries.js"></script>
+        {{ HTML::script('http://html5shim.googlecode.com/svn/trunk/html5.js') }}
+        {{ HTML::script('http://css3-mediaqueries-js.googlecode.com/svn/trunk/css3-mediaqueries.js') }}
     <![endif]-->
 
     @yield('script_header')
