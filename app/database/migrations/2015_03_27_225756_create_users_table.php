@@ -115,7 +115,6 @@ class CreateUsersTable extends Migration {
 	 */
 	public function down()
 	{
-        Schema::drop('pages');
         Schema::drop('menus');
         Schema::drop('menu_categories');
         Schema::drop('configurations');

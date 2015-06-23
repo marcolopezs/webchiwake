@@ -44,6 +44,9 @@ Route::group(['before' => 'guest'], function () {
 //SI EL USUARIO ESTA CONECTADO MOSTRAR
 Route::group(['before' => 'auth'], function () {
 
+    //STAFF
+    Route::resource('administrador/staff', 'AdminStaffController');
+
     //PAGINAS
     Route::resource('administrador/pages', 'AdminPagesController');
 

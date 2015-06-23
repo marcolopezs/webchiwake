@@ -12,7 +12,7 @@ class CreateStaffTable extends Migration {
 	 */
 	public function up()
 	{
-		Schema::create('staff', function(Blueprint $table)
+		Schema::create('staffs', function(Blueprint $table)
 		{
 			$table->increments('id');
             
@@ -24,12 +24,12 @@ class CreateStaffTable extends Migration {
 			$table->timestamps();
 		});
 
-        Schema::create('staff_social', function(Blueprint $table)
+        Schema::create('staff_socials', function(Blueprint $table)
         {
         	$table->increments('id');
 
             $table->integer('staff_id')->unsigned();
-            $table->foreign('staff_id')->references('id')->on('staff');
+            $table->foreign('staff_id')->references('id')->on('staffs');
 
             $table->string('facebook', 100);
             $table->string('twitter', 100);
@@ -52,8 +52,8 @@ class CreateStaffTable extends Migration {
 	 */
 	public function down()
 	{
-        Schema::drop('staff_social');
-		Schema::drop('staff');
+        Schema::drop('staff_socials');
+		Schema::drop('staffs');
 	}
 
 }

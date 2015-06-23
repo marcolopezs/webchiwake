@@ -13,20 +13,20 @@
     {{ HTML::script('https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js') }}
     {{ HTML::script('https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js') }}
     <![endif]-->
-    <!-- global css -->
+    
+    {{-- BOOTSTRAP --}}
+    {{ HTML::style('https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css') }}
 
-    {{ HTML::style('admin/css/bootstrap.min.css') }}
+    {{-- FONTAWESOME --}}
+    {{ HTML::style('https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css') }}
 
-    <!-- font Awesome -->
-    {{ HTML::style('admin/vendors/font-awesome-4.2.0/css/font-awesome.min.css') }}
+    {{-- ESTILOS --}}
     {{ HTML::style('admin/css/styles/black.css') }}
     {{ HTML::style('admin/css/panel.css') }}
     {{ HTML::style('admin/css/metisMenu.css') }}
-    <!-- end of global css -->
-
-    <!--page level css-->
+    
     @yield('header_styles')
-    <!--end of page level css-->
+
 </head>
 
 <body class="skin-josh">
@@ -83,7 +83,23 @@
                             </a>
                         </li>
 
-                        <li {{ (Request::is('administrador/menus') || Request::is('administrador/menus/*') || Request::is('administrador/menus_categories') || Request::is('administrador/menus_categories/*') ? 'class="active"' : '') }}>
+                        <li {{ (Request::is('administrador/about*') || Request::is('administrador/staff*') ? 'class="active"' : '') }}>
+                            <a href="#">
+                                <i class="livicon" data-name="medal" data-size="18" data-c="#6CC66C" data-hc="#6CC66C" data-loop="true"></i>
+                                <span class="title">Nosotros</span>
+                                <span class="fa arrow"></span>
+                            </a>
+                            <ul class="sub-menu">
+                                <li {{ (Request::is('administrador/staff') ? 'class="active"' : '') }}>
+                                    <a href="{{ route('administrador.staff.index') }}">
+                                        <i class="fa fa-angle-double-right"></i>
+                                        Staff
+                                    </a>
+                                </li>
+                            </ul>
+                        </li>
+
+                        <li {{ (Request::is('administrador/menus*') ? 'class="active"' : '') }}>
                             <a href="#">
                                 <i class="livicon" data-name="medal" data-size="18" data-c="#6CC66C" data-hc="#6CC66C" data-loop="true"></i>
                                 <span class="title">Menú</span>
@@ -102,7 +118,7 @@
                                         Nuevo menú
                                     </a>
                                 </li>
-                                <li {{ (Request::is('administrador/menus_categories') || Request::is('administrador/menus_categories/*') ? 'class="active"' : '') }}>
+                                <li {{ (Request::is('administrador/menus_categories*') ? 'class="active"' : '') }}>
                                     <a href="{{ route('administrador.menus_categories.index') }}">
                                         <i class="fa fa-angle-double-right"></i>
                                         Categorías
@@ -111,14 +127,14 @@
                             </ul>
                         </li>
 
-                        <li {{ (Request::is('administrador/config/*') ? 'class="active"' : '') }}>
+                        <li {{ (Request::is('administrador/config*') ? 'class="active"' : '') }}>
                             <a href="{{ route('administrador.config.edit',1) }}">
                                 <i class="livicon" data-name="home" data-size="18" data-c="#418BCA" data-hc="#418BCA" data-loop="true"></i>
                                 <span class="title">Configuración</span>
                             </a>
                         </li>
 
-                        <li {{ ( Request::is('administrador/users') || Request::is('administrador/users/*') || Request::is('administrador/profile') || Request::is('administrador/profile/*') ? 'class="active"' : '') }}>
+                        <li {{ ( Request::is('administrador/users*') || Request::is('administrador/profile*') ? 'class="active"' : '') }}>
                             <a href="#">
                                 <i class="livicon" data-name="brush" data-size="18" data-c="#6CC66C" data-hc="#6CC66C" data-loop="true"></i>
                                 <span class="title">Usuarios</span>
@@ -137,7 +153,7 @@
                                         Nuevo usuario
                                     </a>
                                 </li>
-                                <li {{ (Request::is('administrador/profile') ? 'class="active"' : '') }}>
+                                <li {{ (Request::is('administrador/profile*') ? 'class="active"' : '') }}>
                                     <a href="{{ route('administrador.users.profile') }}">
                                         <i class="fa fa-angle-double-right"></i>
                                         Mi Perfil
@@ -162,20 +178,21 @@
     <a id="back-to-top" href="#" class="btn btn-primary btn-lg back-to-top" role="button" title="Return to top" data-toggle="tooltip" data-placement="left">
         <i class="livicon" data-name="plane-up" data-size="18" data-loop="true" data-c="#fff" data-hc="white"></i>
     </a>
-    <!-- global js -->
-    <script src="{{ asset('admin/js/jquery-1.11.1.min.js') }}" type="text/javascript"></script>
-    <script src="{{ asset('admin/vendors/form_builder1/js/jquery.ui.min.js') }}"></script>
 
-    <script src="{{ asset('admin/js/bootstrap.min.js') }}" type="text/javascript"></script>
-    <!--livicons-->
-    <script src="{{ asset('admin/vendors/livicons/minified/raphael-min.js') }}"></script>
-    <script src="{{ asset('admin/vendors/livicons/minified/livicons-1.4.min.js') }}"></script>
-    <script src="{{ asset('admin/js/josh.js') }}" type="text/javascript"></script>
-    <script src="{{ asset('admin/js/metisMenu.js') }}" type="text/javascript"></script>
-    <script src="{{ asset('admin/vendors/holder-master/holder.js') }}"></script>
-    <!-- end of global js -->
-    <!-- begin page level js -->
+    {{-- jQuery y jQuery UI --}}
+    {{ HTML::script('https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js') }}
+    {{ HTML::script('https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/jquery-ui.min.js') }}
+
+    {{-- BOOTSTRAP --}}
+    {{ HTML::script('https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js') }}
+
+    {{-- SCRIPTS --}}
+    {{ HTML::script('admin/vendors/livicons/minified/raphael-min.js') }}
+    {{ HTML::script('admin/vendors/livicons/minified/livicons-1.4.min.js') }}
+    {{ HTML::script('admin/js/josh.js') }}
+    {{ HTML::script('admin/js/metisMenu.js') }}    
+
     @yield('footer_scripts')
-    <!-- end page level js -->
+
 </body>
 </html>
