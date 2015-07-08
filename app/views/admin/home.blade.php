@@ -6,18 +6,6 @@ Dashboard
 @parent
 @stop
 
-{{-- page level styles --}}
-@section('header_styles')
-<!--page level css -->
-{{ HTML::style('admin/vendors/fullcalendar/css/fullcalendar.css') }}
-{{ HTML::style('admin/css/pages/calendar_custom.css') }}
-{{ HTML::style('admin/vendors/jvectormap/jquery-jvectormap.css') }}
-{{ HTML::style('admin/vendors/animate/animate.min.css') }}
-{{ HTML::style('admin/css/only_dashboard.css') }}
-<!--end of page level css-->
-@stop
-
-
 {{-- Page content --}}
 @section('content_admin')
 <section class="content-header">
@@ -33,9 +21,4 @@ Dashboard
 <section class="content">
 
 </section>
-@stop
-
-{{-- page level scripts --}}
-@section('footer_scripts')
-
 @stop

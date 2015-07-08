@@ -78,14 +78,12 @@
                     <ul id="menu" class="page-sidebar-menu">
                         <li {{ (Request::is('administrador') ? 'class="active"' : '') }}>
                             <a href="{{ route('administrador.index') }}">
-                                <i class="livicon" data-name="home" data-size="18" data-c="#418BCA" data-hc="#418BCA" data-loop="true"></i>
                                 <span class="title">Dashboard</span>
                             </a>
                         </li>
 
                         <li {{ (Request::is('administrador/about*') || Request::is('administrador/staff*') ? 'class="active"' : '') }}>
                             <a href="#">
-                                <i class="livicon" data-name="medal" data-size="18" data-c="#6CC66C" data-hc="#6CC66C" data-loop="true"></i>
                                 <span class="title">Nosotros</span>
                                 <span class="fa arrow"></span>
                             </a>
@@ -101,7 +99,6 @@
 
                         <li {{ (Request::is('administrador/menus*') ? 'class="active"' : '') }}>
                             <a href="#">
-                                <i class="livicon" data-name="medal" data-size="18" data-c="#6CC66C" data-hc="#6CC66C" data-loop="true"></i>
                                 <span class="title">Menú</span>
                                 <span class="fa arrow"></span>
                             </a>
@@ -127,16 +124,20 @@
                             </ul>
                         </li>
 
+                        <li {{ (Request::is('administrador/phrases*') ? 'class="active"' : '') }}>
+                            <a href="{{ route('administrador.phrases.index') }}">
+                                <span class="title">Frases</span>
+                            </a>
+                        </li>
+
                         <li {{ (Request::is('administrador/config*') ? 'class="active"' : '') }}>
                             <a href="{{ route('administrador.config.edit',1) }}">
-                                <i class="livicon" data-name="home" data-size="18" data-c="#418BCA" data-hc="#418BCA" data-loop="true"></i>
                                 <span class="title">Configuración</span>
                             </a>
                         </li>
 
                         <li {{ ( Request::is('administrador/users*') || Request::is('administrador/profile*') ? 'class="active"' : '') }}>
                             <a href="#">
-                                <i class="livicon" data-name="brush" data-size="18" data-c="#6CC66C" data-hc="#6CC66C" data-loop="true"></i>
                                 <span class="title">Usuarios</span>
                                 <span class="fa arrow"></span>
                             </a>
