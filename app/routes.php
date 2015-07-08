@@ -67,6 +67,9 @@ Route::group(['before' => 'auth'], function () {
     Route::get('administrador/gallery/photos/{gallery}/upload', ['as' => 'administrador.gallery.photosupload', 'uses' => 'AdminGalleriesController@photosUpload' ]);
     Route::post('administrador/gallery/photos/{gallery}/upload', ['as' => 'administrador.gallery.photosuploadsave', 'uses' => 'AdminGalleriesController@photosUploadSave' ]);
 
+    //FRASES
+    Route::resource('administrador/phrases', 'AdminPhrasesController');
+
     //SLIDERS
     Route::resource('administrador/slider', 'AdminSlidersController');
     //Route::post('administrador/slider/upload', ['as' => 'administrador.slider.photosuploadsave', 'uses' => 'AdminSlidersController@photosUploadSave' ]);
