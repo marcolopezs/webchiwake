@@ -35,28 +35,6 @@ Advanced Data Tables
             <div class="panel panel-primary filterable">
                 <div class="panel-body">
 
-                    {{ Form::model(Input::all(), ['route' => 'administrador.menus.index', 'method' => 'GET', 'class' => 'form-horizontal']) }}
-
-                        <div class="form-group">
-                            <div class="col-md-2">
-                                {{ Form::text('search', null, ['class' => 'form-control']) }}
-                            </div>
-                            <div class="col-md-2">
-                                {{ Form::select('category', ['' => 'Seleccionar categoria'] + $category, null, ['class' => 'form-control']) }}
-                            </div>
-                            <div class="col-md-2">
-                                {{ Form::select('publicar', ['' => 'Seleccionar estado', '0' => 'No publicado', '1' => 'Publicado'], null, ['class' => 'form-control']) }}
-                            </div>
-                            <div class="col-md-1">
-                                {{ Form::button('Buscar', ['type' => 'submit', 'class' => 'btn btn-primary']) }}
-                            </div>
-                            <div class="col-md-2">
-                                <a href="{{ route('administrador.menus.index') }}" class="btn btn-danger">Borrar busqueda</a>
-                            </div>
-                        </div>
-
-                    {{ Form::close() }}
-
                     <table class="table table-striped table-responsive">
                         <thead>
                             <tr>
@@ -109,37 +87,6 @@ Advanced Data Tables
             </div>
         </div>
     </div>
-
-    <!--delete modal starts here-->
-    <div class="modal fade" id="delete" tabindex="-1" role="dialog" aria-labelledby="edit" aria-hidden="true">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-                    <h4 class="modal-title custom_align" id="Heading">
-                        Delete this entry
-                    </h4>
-                </div>
-                <div class="modal-body">
-                    <div class="alert alert-warning">
-                        <span class="glyphicon glyphicon-warning-sign"></span>
-                        Are you sure you want to delete this Record?
-                    </div>
-                </div>
-                <div class="modal-footer ">
-                    <button type="button" class="btn btn-warning">
-                        <span class="glyphicon glyphicon-ok-sign"></span>
-                        Yes
-                    </button>
-                    <button type="button" class="btn btn-warning" data-dismiss="modal">
-                        <span class="glyphicon glyphicon-remove"></span>
-                        No
-                    </button>
-                </div>
-            </div>
-        </div>
-    </div>
-    <!-- /.modal ends here -->
 
 </section>
 @stop

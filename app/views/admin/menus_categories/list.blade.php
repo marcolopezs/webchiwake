@@ -39,6 +39,7 @@ Advanced Data Tables
                             <tr>
 
                                 <th>Titulo</th>
+                                <th>Menú</th>
                                 <th>Publicar</th>
                                 <th>Acciones</th>
                             </tr>
@@ -47,6 +48,7 @@ Advanced Data Tables
                             @foreach($categories as $item)
                             <tr>
                                 <td>{{ $item->titulo }}</td>
+                                <td><a href="{{ route('administrador.menu.index') }}?category={{ $item->id }}">Menú</a></td>
                                 <td>{{ $item->publicar ? 'Publicado' : 'No publicado' }}</td>
                                 <td>
                                     <div class="button-dropdown" data-buttons="dropdown">
@@ -69,37 +71,6 @@ Advanced Data Tables
             </div>
         </div>
     </div>
-
-    <!--delete modal starts here-->
-    <div class="modal fade" id="delete" tabindex="-1" role="dialog" aria-labelledby="edit" aria-hidden="true">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-                    <h4 class="modal-title custom_align" id="Heading">
-                        Delete this entry
-                    </h4>
-                </div>
-                <div class="modal-body">
-                    <div class="alert alert-warning">
-                        <span class="glyphicon glyphicon-warning-sign"></span>
-                        Are you sure you want to delete this Record?
-                    </div>
-                </div>
-                <div class="modal-footer ">
-                    <button type="button" class="btn btn-warning">
-                        <span class="glyphicon glyphicon-ok-sign"></span>
-                        Yes
-                    </button>
-                    <button type="button" class="btn btn-warning" data-dismiss="modal">
-                        <span class="glyphicon glyphicon-remove"></span>
-                        No
-                    </button>
-                </div>
-            </div>
-        </div>
-    </div>
-    <!-- /.modal ends here -->
 
 </section>
 @stop
