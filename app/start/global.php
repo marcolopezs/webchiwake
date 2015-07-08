@@ -1,5 +1,7 @@
 <?php
 
+use Chiwake\Entities\Configuration;
+
 /*
 |--------------------------------------------------------------------------
 | Register The Laravel Class Loader
@@ -80,6 +82,11 @@ App::down(function()
 
 require app_path().'/filters.php';
 
+function configWeb()
+{
+    $baseUrl = Configuration::find(1);
+    return $baseUrl;
+}
 
 
 //MOVER ARCHIVO
