@@ -14,7 +14,7 @@
                 <div class="ribbon ribbon-1">
                     <h2 class="sm">BIENVENIDO A</h2>
                 </div>
-                <h1 style="margin-top: 10px;" class="sbig text-uppercase"><img src="images/logo-big.png" alt=""></h1>
+                <h1 style="margin-top: 10px;" class="sbig text-uppercase"><img src="images/logo.png" alt=""></h1>
             </div>
         </div>
     </div>
@@ -26,13 +26,12 @@
     <div class="container">
         <div class="good-food-heading text-center">
             <div class="good-food-title style-2">
-                <h6 class="xmd text-uppercase">Nosotros</h6>
                 <i class="icon awe_quote_left"></i>
-                <h2 class="lg text-capitalize">La Buena Comida es Nuestra Pasión</h2>
+                <h2 class="lg text-capitalize">Chiwake</h2>
                 <i class="icon awe_quote_right"></i>
             </div>
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus tristique laoreet metus, sit amet accumsan quam consequat ac. Nulla non nisi placerat, sodales lectus at, congue libero. Vivamus justo nulla, euismod eu ornare vitae, auctor quis leo.</p>
-            <a href="about.html" class="awe-btn awe-btn-2 awe-btn-default text-uppercase">Nosotros</a>
+            <p>Somos personas que engrien personas. Desde nuestro primer colaborador hasta el más distinguido cliente tiene que sentirse engreído. Nos preocupamos porque todos, absolutamente todos, nos beneficiemos de pertenecer a Chiwake. <br/> Chiwake es una familia que como tal se preocupa por su casa y por los que la habitan.</p>
+            <a href="nosotros" class="awe-btn awe-btn-2 awe-btn-default text-uppercase">Nosotros</a>
         </div>
     </div>
 
@@ -51,18 +50,24 @@
     <!-- END / OVERLAY -->
 
     <div class="container">
-        <div class="testimonial-content">
-            <div class="icon-head">
-                <i class="icon awe_quote_left"></i>
-            </div>
+        <div class="testimonial-content testimonial-slider">
 
-            <blockquote>
-                <p>No se trata de nutrientes y calorías.</p>
-                <span>Se trata de compartir. Se trata de la disfrutar.</span>
-                <div class="test-footer text-right">
-                    <span class="sm">Carlos Torres</span>
+            @foreach($frases as $item)
+            <div class="item">
+                <div class="icon-head">
+                    <i class="icon awe_quote_left"></i>
                 </div>
-            </blockquote>
+
+                <blockquote>
+                    <p>{{ $item->titulo }}</p>
+                    <span>{{ $item->descripcion }}</span>
+                    <div class="test-footer text-right">
+                        <span class="sm">{{ $item->autor }}</span>
+                    </div>
+                </blockquote>
+            </div>
+            @endforeach
+
         </div>
     </div>
 </section>
@@ -81,7 +86,9 @@
                     <div class="text-wrap">
                         <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus tristique laoreet metus, sit amet accumsan quam consequat ac. Nulla non nisi placerat, sodales lectus at, congue libero. Vivamus justo nulla, euismod eu ornare vitae, auctor quis leo. Vestibulum quis venenatis erat, a rutrum neque.</p>
                     </div>
-                    <a href="menu.html" class="awe-btn awe-btn-2 awe-btn-ar text-uppercase">Ver menú</a>
+                    <div class="awe-btn awe-btn-2 awe-btn-ar text-uppercase">
+                        <a href="menu" class="font12">Ver menú</a>
+                    </div>                    
                 </div>  
             </div>
             <div class="col-md-6 col-md-offset-1">
@@ -137,100 +144,13 @@
             </div>
             <div class="links">
                 <div class="reservation-link">
-                    <a href="reservation.html" class="awe-btn awe-btn-2 awe-btn-default text-uppercase">RESERVACIÓN</a>
+                    <a href="reservacion" class="awe-btn awe-btn-2 awe-btn-default text-uppercase">RESERVACIÓN</a>
                 </div>
             </div>
         </div>
     </div>
 </section>
 <!-- END / SECTION HIGHLIGHT -->
-
-<!-- SECTION BLOG -->
-<section id="section-blog" class="section-blog section">
-    <div class="divider divider-2"></div>
-
-    <div class="container">
-        <div class="row">
-            <div class="blog-grid">
-                <div class="grid-sizer"></div>
-                <!-- BLOG POST -->
-                <div class="post post-single w2"> 
-                    <div class="post-media">
-                        <img src="images/blog/img-1.jpg" alt="">
-                    </div>
-                    <div class="post-body">
-                        <div class="post-title">
-                            <h2 class="text-uppercase"><a href="#">AWARD WINNING CHEF</a></h2>
-                        </div>
-                        <div class="post-content">
-                            <p>Macaroon croissant pudding sweet roll. Jelly candy tootsie</p>
-                        </div>
-                    </div>
-                </div>
-                <!-- END / BLOG POST -->
-
-                <!-- BLOG POST -->
-                <div class="post post-single">
-                    <div class="post-media">
-                        <img src="images/blog/img-2.jpg" alt="">
-                    </div>
-                    <div class="post-body">
-                        <div class="post-title">
-                            <h2 class="text-uppercase"><a href="#">A MULTI-POST STORY</a></h2>
-                        </div>
-                    </div>
-                </div>
-                <!-- END / BLOG POST -->
-
-                <!-- BLOG POST -->
-                <div class="post post-single">
-                    <div class="post-media">
-                        <img src="images/blog/img-3.jpg" alt="">
-                    </div>
-                    <div class="post-body">
-                        <div class="post-title">
-                            <h2 class="text-uppercase"><a href="#">HOW TO USE CHOPSTICKS</a></h2>
-                        </div>
-                    </div>
-                </div>
-                <!-- END / BLOG POST -->
-
-                <!-- BLOG POST -->
-                <div class="post post-single">
-                    <div class="post-media">
-                        <img src="images/blog/img-4.jpg" alt="">
-                    </div>
-                    <div class="post-body">
-                        <div class="post-title">
-                            <h2 class="text-uppercase"><a href="#">PHASELLUS JUSTO MAURIS, TEMPUS EGET NISL SIT</a></h2>
-                        </div>
-                    </div>
-                </div>
-                <!-- END / BLOG POST -->
-
-                <!-- BLOG POST -->
-                <div class="post post-single">
-                    <div class="post-media">
-                        <img src="images/blog/img-2.jpg" alt="">
-                    </div>
-                    <div class="post-body">
-                        <div class="post-title">
-                            <h2 class="text-uppercase"><a href="#">A MULTI-POST STORY</a></h2>
-                        </div>
-                    </div>
-
-                </div>
-                <!-- END / BLOG POST -->
-            </div>
-        </div>
-
-        <div class="loadmore text-center">
-            <a href="#" class="awe-btn awe-btn-2 awe-btn-default text-uppercase">VER MÁS</a>
-        </div>
-
-    </div>
-</section>
-<!-- END / SECTION BLOG -->
 
 <!-- CONTACT US -->
 <section id="contact" class="contact section">
@@ -273,13 +193,13 @@
                 <div class="inner wow fadeInUp" data-wow-delay=".3s">
                     <form id="send-message-form" action="processContact.php" method="post">
                         <div class="form-item form-textarea">
-                            <textarea placeholder="Your Message" name="message"></textarea>
+                            <textarea placeholder="Mensaje" name="message"></textarea>
                         </div>
                         <div class="form-item form-type-name">
-                            <input type="text" placeholder="Your Name" name="name">
+                            <input type="text" placeholder="Nombre" name="name">
                         </div>
                         <div class="form-item form-type-email">
-                            <input type="text" placeholder="Your Email" name="email">
+                            <input type="text" placeholder="Email" name="email">
                         </div>
                         <div class="clearfix"></div>
                         <div class="form-actions text-center">
@@ -302,10 +222,10 @@
                     </div>
                     <form>
                         <div class="form-item">
-                            <input type="text" placeholder="Your email" class="text-uppercase" name="email">
+                            <input type="text" placeholder="Email" class="text-uppercase" name="email">
                         </div>
                         <div class="form-actions">
-                            <input type="submit" value="Subscribe" class="awe-btn awe-btn-2 awe-btn-default text-uppercase">
+                            <input type="submit" value="Suscribete" class="awe-btn awe-btn-2 awe-btn-default text-uppercase">
                         </div>
                     </form>
                 </div>

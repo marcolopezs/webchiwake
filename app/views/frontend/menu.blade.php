@@ -47,7 +47,7 @@
                                         <p>{{ $item_menu->descripcion }}</p>
                                     </div>
                                     <div class="prices">
-                                        <span class="price xsm">${{ $item_menu->precio }}</span>
+                                        <span class="price xsm">S/. {{ $item_menu->precio }}</span>
                                     </div>
                                 </div>
                             </div>

@@ -23,19 +23,12 @@
                         <span class="md">Encuentranos aquí</span>
                         <div class="location-1">
                             <i class="icon awe_map_marker"></i>
-                            <strong>Location 1: 500 CURRY RD</strong>
-                            SCHENECTADY NY 12306 (518)356-5373 
-                        </div>
-
-                        <div class="location-1">
-                            <i class="icon awe_map_marker"></i>
-                            <strong>Location 1: 500 CURRY RD</strong>
-                            SCHENECTADY NY 12306 (518)356-5373 
+                            <strong>Av. Arequipa 915</strong>
                         </div>
 
                         <div class="phone">
-                            <strong>Support Call</strong>
-                            (518)356-5373
+                            <strong>Teléfono</strong>
+                            (511) 3792 - 7384 - 8459
                         </div>
                     </address>
                 </div>
@@ -98,30 +91,6 @@
         <!-- MAP -->
         <div id="map" data-map-zoom="14" data-map-latlng="-12.073780, -77.036211" data-snazzy-map-theme="grayscale" data-map-marker="images/marker.png" data-map-marker-size="200*60"></div>
         <!-- END / MAP -->
-    </div>
-
-    <div class="contact-second tb">
-    
-        <!-- NEWS LETTER -->
-        <div class="tb-cell">
-            <div class="news-letter text-center">
-                <div class="inner wow fadeInUp" data-wow-delay=".6s">
-                    <div class="letter-heading">
-                        <h4 class="sm text-uppercase">RECIBE NOTICIAS DE NOSOTROS</h4>
-                        <p>Doner filet mignon bacon corned beef rump, frankfurter sirloin</p>
-                    </div>
-                    <form>
-                        <div class="form-item">
-                            <input type="text" placeholder="Your email" class="text-uppercase" name="email">
-                        </div>
-                        <div class="form-actions">
-                            <input type="submit" value="Subscribe" class="awe-btn awe-btn-2 awe-btn-default text-uppercase">
-                        </div>
-                    </form>
-                </div>
-            </div>
-        </div>
-        <!-- END / NEWS LETTER -->
     </div>
 
 </section>

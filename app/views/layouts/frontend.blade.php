@@ -8,23 +8,31 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <meta name="format-detection" content="telephone=no">
 
-    <title>Chiwake</title>
+    <title>
+        {{ configWeb()->titulo }}
+    </title>
 
-    <!-- GOOGLE FONT -->
-    {{ HTML::style('http://fonts.googleapis.com/css?family=Playfair+Display:400,400italic') }}
-    {{ HTML::style('http://fonts.googleapis.com/css?family=Montserrat') }}
-    {{ HTML::style('http://fonts.googleapis.com/css?family=Quattrocento+Sans:400,400italic,700,700italic') }}
+    <meta name="keywords" content="{{ configWeb()->keywords }}"/>
+    <meta name="description" content="{{ configWeb()->descripcion }}"/>
+    <meta name="robots" content="index,follow">
+    <meta name="googlebot" content="index, follow">
 
-    <!-- CSS LIBRARY -->
-    {{ HTML::style('css/lib/bootstrap.min.css') }}
+    {{-- GOOGLE FONT --}}
+    {{ HTML::style('http://fonts.googleapis.com/css?family=Signika:400,700,300') }}
+
+    {{-- Bootstrap - Font Awesome --}}
+    {{ HTML::style('https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css') }}
+    {{ HTML::style('https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css') }}
+
+    {{-- CSS LIBRARY --}}
     {{ HTML::style('css/lib/owl.carousel.css') }}
-    {{ HTML::style('css/lib/font-awesome.min.css') }}
 
-    <!-- AWE FONT -->
+    {{-- AWE FONT --}}
     {{ HTML::style('css/awe-fonts.css') }}
 
-    <!-- PAGE STYLE -->
+    {{-- PAGE STYLE --}}
     {{ HTML::style('css/style.css') }}
+    {{ HTML::style('css/responsive.css') }}
 
     <!--[if lt IE 9]>
         {{ HTML::script('http://html5shim.googlecode.com/svn/trunk/html5.js') }}
@@ -36,7 +44,7 @@
 </head>
 <body class="home">
 
-<!-- PRELOADER -->
+{{-- PRELOADER --}}
 <div class="preloader">
     <div class="inner">
         <div class="item item1"></div>
@@ -44,27 +52,27 @@
         <div class="item item3"></div>
     </div>
 </div>
-<!-- END / PRELOADER -->
+{{-- END / PRELOADER --}}
 
-<!-- PAGE WRAP -->
+{{-- PAGE WRAP --}}
 <div id="page-wrap">
     
-    <!-- HEADER -->
+    {{-- HEADER --}}
     <header id="header" class="header header-1">
         <div class="container">
-            <!-- LOGO -->
+            {{-- LOGO --}}
             <div class="logo"><a href="/"><img src="images/logo.png" alt=""></a></div>
-            <!-- END / LOGO -->
+            {{-- END / LOGO --}}
 
-            <!-- OPEN MENU MOBILE -->
+            {{-- OPEN MENU MOBILE --}}
             <div class="open-menu-mobile">
                 <span>Activar menú de móvil</span>
             </div>
-            <!-- END / OPEN MENU MOBILE -->
+            {{-- END / OPEN MENU MOBILE --}}
 
-            <!-- NAVIGATION -->
+            {{-- NAVIGATION --}}
             <nav class="navigation text-right" data-menu-type="1200">
-                <!-- NAV -->
+                {{-- NAV --}}
                 <ul class="nav text-uppercase">
                     <li><a href="/">Inicio</a></li>
                     <li><a href="nosotros">Nosotros</a></li>
@@ -72,24 +80,24 @@
                     <li><a href="reservacion">Reservación</a></li>
                     <li><a href="contacto">Contactenos</a></li>
                 </ul>
-                <!-- END / NAV -->
+                {{-- END / NAV --}}
                 
-                <!-- SOCIAL -->
+                {{-- SOCIAL --}}
                 <div class="head-social">
                     <a href="#"><i class="fa fa-facebook"></i></a>
                     <a href="#"><i class="fa fa-pinterest"></i></a>                    
                 </div>
-                <!-- END / SOCIAL -->
+                {{-- END / SOCIAL --}}
             </nav>
-            <!-- END / NAVIGATION -->
+            {{-- END / NAVIGATION --}}
         </div>
 
     </header>
-    <!-- END / HEADER -->
+    {{-- END / HEADER --}}
 
     @yield('contenido_frontend')
 
-    <!-- FOOTER -->
+    {{-- FOOTER --}}
     <footer id="footer" class="footer">
         <div class="divider divider-1 divider-color"></div>
         <div class="awe-color"></div>
@@ -99,17 +107,18 @@
             </div>
         </div>
     </footer>
-    <!-- END / FOOTER -->
+    {{-- END / FOOTER --}}
 
 </div>
-<!-- END / PAGE WRAP -->
+{{-- END / PAGE WRAP --}}
 
-<!-- LOAD JQUERY -->
-<script type="text/javascript" src="js/lib/jquery-1.11.2.min.js"></script>
+{{-- jQuery - Bootstrap --}}
+{{ HTML::script('https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js') }}
+{{ HTML::script('https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js') }}
 
-<!-- GOOGLE MAP -->
+{{-- GOOGLE MAP --}}
 <script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=false"></script>
-<script type="text/javascript" src="js/lib/bootstrap.min.js"></script>
+
 <script type="text/javascript" src="js/lib/jquery.bxslider.min.js"></script>
 <script type="text/javascript" src="js/lib/jquery.easing.min.js"></script>
 <script type="text/javascript" src="js/lib/jquery.owl.carousel.min.js"></script>
