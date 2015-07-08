@@ -79,24 +79,6 @@ Editar registro
                             </div>
                         </div>
 
-                        <div class="form-group @if($errors->has('imagen')) has-error @endif">
-                            {{ Form::label('imagen_actual', 'Icono actual', ['class' => 'col-md-3 control-label']) }}
-                            <div class="col-md-9">
-                                <a class="fancybox" href="/upload/{{ $config->icon }}" title="{{ $config ->titulo }}">
-                                    <img src="/upload/{{ $config->icon }}" alt="" width="100"/>
-                                </a>
-                                {{ Form::hidden('imagen_actual', $config->icon) }}
-                            </div>
-                        </div>
-
-                        <div class="form-group @if($errors->has('imagen')) has-error @endif">
-                            {{ Form::label('imagen', 'Icono', ['class' => 'col-md-3 control-label']) }}
-                            <div class="col-md-9">
-                                {{ Form::file('imagen') }}
-                                {{ $errors->first('imagen', '<span class="help-block">:message</span>') }}
-                            </div>
-                        </div>
-
                         <!-- Form actions -->
                         <div class="form-group">
                             <div class="col-md-12 text-right">

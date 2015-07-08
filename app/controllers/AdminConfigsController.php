@@ -8,9 +8,7 @@ class AdminConfigsController extends \BaseController {
         'titulo' => 'required',
         'dominio' => 'required',
         'descripcion' => 'required|min:10|max:255',
-        'keywords' => 'required',
-        'imagen' => 'mimes:ico',
-        'timezone' => 'required'
+        'keywords' => 'required'
     ];
 
     private $configurationRepo;
@@ -43,28 +41,13 @@ class AdminConfigsController extends \BaseController {
 	{
         $config = $this->configurationRepo->findOrFail($id);
 
-        $data = Input::only(['titulo','dominio','descripcion','keywords','imagen','google_analytics']);
+        $data = Input::only(['titulo','dominio','descripcion','keywords','google_analytics']);
 
         $validator = Validator::make($data, $this->rules);
 
         if($validator->passes())
         {
-            //VARIABLES
-            $timezone = Input::get('timezone');
-
-            //VERIFICAR SI SUBIO IMAGEN
-            if(Input::hasFile('imagen')){
-                CrearCarpeta();
-                $ruta = "upload/";
-                $archivo = Input::file('imagen');
-                $file = FileMove($archivo,$ruta);
-                $imagen = $file;
-            }else{
-                $imagen = Input::get('imagen_actual');
-            }
-
             //GUARDAR DATOS
-            $config->icon = $imagen;
             $config->fill($data);
             $config->save();
 
