@@ -39,7 +39,7 @@ Agregar nuevo registro
             <!--basic form starts-->
             <div class="panel panel-danger">
                 <div class="panel-body border">
-                    {{ Form::open(['route' => 'administrador.menus.store', 'method' => 'POST', 'class' => 'form-horizontal form-bordered', 'files' => 'true']) }}
+                    {{ Form::open(['route' => 'administrador.staff.store', 'method' => 'POST', 'class' => 'form-horizontal form-bordered', 'files' => 'true']) }}
 
                         <div class="form-group @if($errors->has('titulo')) has-error @endif">
                             {{ Form::label('titulo', 'Titulo', ['class' => 'col-md-3 control-label']) }}
@@ -64,27 +64,11 @@ Agregar nuevo registro
                             </div>
                         </div>
 
-                        <div class="form-group @if($errors->has('precio')) has-error @endif">
-                            {{ Form::label('precio', 'Precio', ['class' => 'col-md-3 control-label']) }}
-                            <div class="col-md-9">
-                                {{ Form::text('precio', null, ['class' => 'form-control']) }}
-                                {{ $errors->first('precio', '<span class="help-block">:message</span>') }}
-                            </div>
-                        </div>
-
                         <div class="form-group @if($errors->has('imagen')) has-error @endif">
                             {{ Form::label('imagen', 'Imagen', ['class' => 'col-md-3 control-label']) }}
                             <div class="col-md-9">
                                 {{ Form::file('imagen') }}
                                 {{ $errors->first('imagen', '<span class="help-block">:message</span>') }}
-                            </div>
-                        </div>
-
-                        <div class="form-group @if($errors->has('categoria')) has-error @endif">
-                            {{ Form::label('categoria', 'Categoría', ['class' => 'col-md-3 control-label']) }}
-                            <div class="col-md-9">
-                                {{ Form::select('categoria', ['' => 'Seleccionar'] + $category, $selected, ['class' => 'form-control']) }}
-                                {{ $errors->first('categoria', '<span class="help-block">:message</span>') }}
                             </div>
                         </div>
 
@@ -107,7 +91,7 @@ Agregar nuevo registro
                         <div class="form-group">
                             <div class="col-md-12 text-right">
                                 {{ Form::submit('Guardar', ['class' => 'btn btn-responsive btn-primary btn-md']) }}
-                                <a href="{{ route('administrador.menus.index') }}" class="btn btn-responsive btn-default btn-md">Cancelar</a>
+                                <a href="{{ route('administrador.staff.index') }}" class="btn btn-responsive btn-default btn-md">Cancelar</a>
                             </div>
                         </div>
 
