@@ -55,9 +55,9 @@ return array(
 		'mysql' => array(
 			'driver'    => 'mysql',
 			'host'      => 'localhost',
-			'database'  => 'chiwake',
-			'username'  => 'root',
-			'password'  => 'secret',
+			'database'  => 'marost2_chiwake',
+			'username'  => 'marost2_admin',
+			'password'  => 'master@18073',
 			'charset'   => 'utf8',
 			'collation' => 'utf8_unicode_ci',
 			'prefix'    => '',
