@@ -61,7 +61,8 @@
     <header id="header" class="header header-1">
         <div class="container">
             {{-- LOGO --}}
-            <div class="logo"><a href="/"><img src="images/logo.png" alt=""></a></div>
+            
+            <div class="logo"><a href="/"><img {{ (Request::is('/') ? 'src="images/logo-texto.png"' : 'src="images/logo.png"') }} alt=""></a></div>
             {{-- END / LOGO --}}
 
             {{-- OPEN MENU MOBILE --}}

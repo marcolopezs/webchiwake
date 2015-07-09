@@ -14,7 +14,7 @@
                 <div class="ribbon ribbon-1">
                     <h2 class="sm">BIENVENIDO A</h2>
                 </div>
-                <h1 style="margin-top: 10px;" class="sbig text-uppercase"><img src="images/logo.png" alt=""></h1>
+                <h1 style="margin-top: 10px;" class="sbig text-uppercase"><img src="images/logo-big.png" alt=""></h1>
             </div>
         </div>
     </div>
