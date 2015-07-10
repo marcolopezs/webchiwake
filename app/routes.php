@@ -26,7 +26,7 @@ Route::post('contacto', ['as' => 'front.contacto.form', 'uses' => 'FrontendContr
 /* IMAGENES */
 Route::get('/upload/{folder}/{width}x{height}/{image}', function($folder, $width, $height, $image)
 {
-    $file = base_path() . '/public/upload/' . $folder . '/' .$image;
+    $file = public_path() . '/upload/' . $folder . '/' .$image;
     App::make('phpthumb')->create('resize', array($file, $width, $height, 'adaptive'))->show();
 });
 
