@@ -595,3 +595,12 @@ border-color:#31B0D5;
     margin-left: 15%;
     color: #000;
 }
+
+.alert.alert-dismissable{
+  margin-top: 10px;
+  color: #000;
+}
+
+#listPhotos{
+  list-style: none;
+}
