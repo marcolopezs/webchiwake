@@ -1,5 +1,6 @@
 <?php
 
+use Chiwake\Entities\About;
 use Chiwake\Entities\Phrase;
 use Chiwake\Entities\Menu;
 use Chiwake\Entities\MenuCategory;
@@ -26,9 +27,12 @@ class FrontendController extends \BaseController {
         $frases = Phrase::wherePublicar(1)->orderByRaw("RAND()")->get();
 
         //STAFF
-        $staff = Staff::wherePublicar(1)->orderBy('cargo', 'asc')->get();
+        $staff = Staff::wherePublicar(1)->orderBy('orden', 'asc')->get();
+
+        //QUIENES SOMOS - MISION - VISION
+        $about = About::find(1);
         
-        return View::make('frontend.nosotros', compact('frases', 'staff'));
+        return View::make('frontend.nosotros', compact('frases', 'staff', 'about'));
     }
 
     public function menu()
