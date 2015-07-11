@@ -1,10 +1,4 @@
-@extends('layouts.admin')
-
-{{-- Page title --}}
-@section('title')
-Advanced Data Tables
-@parent
-@stop
+    @extends('layouts.admin')
 
 {{-- page level styles --}}
 @section('header_styles')
@@ -15,8 +9,6 @@ Advanced Data Tables
 {{ HTML::style('admin/css/pages/tables.css') }}
 {{ HTML::style('admin/vendors/Buttons-master/css/buttons.css') }}
 <!--end of page level css-->
-
-{{ HTML::style('//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css') }}
 @stop
 
 {{-- Page content --}}

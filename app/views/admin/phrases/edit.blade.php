@@ -32,7 +32,7 @@ Editar registro
 					{{ Form::model($post, ['route' => ['administrador.phrases.update', $post->id], 'method' => 'PUT', 'class' => 'form-horizontal form-bordered', 'files' => 'true']) }}
 
                         <div class="form-group @if($errors->has('titulo')) has-error @endif">
-                            {{ Form::label('titulo', 'Titulo', ['class' => 'col-md-3 control-label']) }}
+                            {{ Form::label('titulo', 'Primera linea', ['class' => 'col-md-3 control-label']) }}
                             <div class="col-md-9">
                                 {{ Form::text('titulo', null, ['class' => 'form-control']) }}
                                 {{ $errors->first('titulo', '<span class="help-block">:message</span>') }}
@@ -40,7 +40,7 @@ Editar registro
                         </div>
 
                         <div class="form-group @if($errors->has('descripcion')) has-error @endif">
-                            {{ Form::label('descripcion', 'Descripcion', ['class' => 'col-md-3 control-label']) }}
+                            {{ Form::label('descripcion', 'Segunda linea', ['class' => 'col-md-3 control-label']) }}
                             <div class="col-md-9">
                                 {{ Form::text('descripcion', null, ['class' => 'form-control']) }}
                                 {{ $errors->first('descripcion', '<span class="help-block">:message</span>') }}

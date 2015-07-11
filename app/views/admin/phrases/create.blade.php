@@ -1,11 +1,5 @@
 @extends('layouts.admin')
 
-{{-- Page title --}}
-@section('title')
-Agregar nuevo registro
-@parent
-@stop
-
 {{-- page level styles --}}
 @section('header_styles')
 {{ HTML::style('admin/vendors/jasny-bootstrap/css/jasny-bootstrap.css') }}
@@ -33,7 +27,7 @@ Agregar nuevo registro
                     {{ Form::open(['route' => 'administrador.phrases.store', 'method' => 'POST', 'class' => 'form-horizontal form-bordered', 'files' => 'true']) }}
 
                         <div class="form-group @if($errors->has('titulo')) has-error @endif">
-                            {{ Form::label('titulo', 'Titulo', ['class' => 'col-md-3 control-label']) }}
+                            {{ Form::label('titulo', 'Primera linea', ['class' => 'col-md-3 control-label']) }}
                             <div class="col-md-9">
                                 {{ Form::text('titulo', null, ['class' => 'form-control']) }}
                                 {{ $errors->first('titulo', '<span class="help-block">:message</span>') }}
@@ -41,7 +35,7 @@ Agregar nuevo registro
                         </div>
 
                         <div class="form-group @if($errors->has('descripcion')) has-error @endif">
-                            {{ Form::label('descripcion', 'Descripcion', ['class' => 'col-md-3 control-label']) }}
+                            {{ Form::label('descripcion', 'Segunda linea', ['class' => 'col-md-3 control-label']) }}
                             <div class="col-md-9">
                                 {{ Form::text('descripcion', null, ['class' => 'form-control']) }}
                                 {{ $errors->first('descripcion', '<span class="help-block">:message</span>') }}

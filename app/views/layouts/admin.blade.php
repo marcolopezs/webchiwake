@@ -2,11 +2,7 @@
 <html>
 <head>
     <meta charset="UTF-8">
-    <title>
-        @section('title')
-        | Admin
-        @show
-    </title>
+    <title>Administrador</title>
     <meta content='width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no' name='viewport'>
 
     <!--[if lt IE 9]>
@@ -24,6 +20,9 @@
     {{ HTML::style('admin/css/styles/black.css') }}
     {{ HTML::style('admin/css/panel.css') }}
     {{ HTML::style('admin/css/metisMenu.css') }}
+
+    {{-- jQuery UI --}}
+    {{ HTML::style('//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css') }}
     
     @yield('header_styles')
 
@@ -110,7 +109,7 @@
                         </li>
 
                         <li {{ (Request::is('administrador/menus*') ? 'class="active"' : '') }}>
-                            <a href="{{ route('administrador.menus.index') }}">
+                            <a href="{{ route('administrador.menus_categories.index') }}">
                                 <span class="title">Menús</span>
                             </a>
                         </li>

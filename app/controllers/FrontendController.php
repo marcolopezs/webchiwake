@@ -37,8 +37,8 @@ class FrontendController extends \BaseController {
 
     public function menu()
     {
-        $menus_categories = MenuCategory::wherePublicar(1)->orderBy('id','asc')->get();
-        $menus = Menu::all();
+        $menus_categories = MenuCategory::wherePublicar(1)->orderBy('orden','asc')->get();
+        $menus = Menu::orderBy('titulo', 'asc')->get();
 
         return View::make('frontend.menu', compact('menus_categories', 'menus'));
     }
