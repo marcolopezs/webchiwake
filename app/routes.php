@@ -56,10 +56,18 @@ Route::group(['before' => 'auth'], function () {
     Route::post('administrador/staff-order/order', ['as' => 'administrador.staff.orderForm', 'uses' => 'AdminStaffController@orderForm' ]);
 
     //MENUS
-    Route::resource('administrador/menus', 'AdminMenusController');
+    Route::get('administrador/menus/{category}', ['as' => 'administrador.menus.index', 'uses' => 'AdminMenusController@index']);
+    Route::get('administrador/menus/{category}/create', ['as' => 'administrador.menus.create', 'uses' => 'AdminMenusController@create']);
+    Route::post('administrador/menus/{category}', ['as' => 'administrador.menus.store', 'uses' => 'AdminMenusController@store']);
+    Route::get('administrador/menus/{category}/{menus}', ['as' => 'administrador.menus.show', 'uses' => 'AdminMenusController@show']);
+    Route::get('administrador/menus/{category}/edit/{menus}', ['as' => 'administrador.menus.edit', 'uses' => 'AdminMenusController@edit']);
+    Route::put('administrador/menus/{category}/{menus}', ['as' => 'administrador.menus.update', 'uses' => 'AdminMenusController@update']);
+    Route::delete('administrador/menus/{category}/{menus}', ['as' => 'administrador.menus.destroy', 'uses' => 'AdminMenusController@destroy']);
 
     //CATEGORIAS DE MENUS
     Route::resource('administrador/menus_categories', 'AdminMenuCategoriesController');
+    Route::get('administrador/menus_categories-order', ['as' => 'administrador.menus_categories.order', 'uses' => 'AdminMenuCategoriesController@order']);
+    Route::post('administrador/menus_categories-order/order', ['as' => 'administrador.menus_categories.orderForm', 'uses' => 'AdminMenuCategoriesController@orderForm' ]);
 
     //FRASES
     Route::resource('administrador/phrases', 'AdminPhrasesController');

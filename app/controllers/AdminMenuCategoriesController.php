@@ -23,7 +23,7 @@ class AdminMenuCategoriesController extends \BaseController {
 	 */
     public function index()
     {
-        $categories = $this->menuCategoryRepo->orderBy('titulo', 'asc');
+        $categories = $this->menuCategoryRepo->orderBy('orden', 'asc');
         return View::make('admin.menus_categories.list', compact('categories'));
     }
 
@@ -146,6 +146,32 @@ class AdminMenuCategoriesController extends \BaseController {
     {
         $this->menuCategoryRepo->delete($id);
         return Redirect::route('administrador.menus_categories.index');
+    }
+
+
+    public function order()
+    {
+        $photos = MenuCategory::orderBy('orden', 'asc')->get();
+        return View::make('admin.menus_categories.order', compact('photos'));
+    }
+
+    public function orderForm()
+    {
+        if(Request::ajax())
+        {
+            $sortedval = $_POST['listPhoto'];
+            try{
+                foreach ($sortedval as $key => $sort){
+                    $sortPhoto = MenuCategory::find($sort);
+                    $sortPhoto->orden = $key;
+                    $sortPhoto->save();
+                }
+            }
+            catch (Exception $e)
+            {
+                return 'false';
+            }
+        }
     }
 
 }

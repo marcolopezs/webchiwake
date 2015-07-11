@@ -2,6 +2,7 @@
 
 use Chiwake\Repositories\BaseRepo;
 use Chiwake\Entities\Menu;
+use Chiwake\Entities\MenuCategory;
 use Chiwake\Repositories\MenuCategoryRepo;
 use Chiwake\Repositories\MenuRepo;
 
@@ -31,10 +32,11 @@ class AdminMenusController extends \BaseController {
 	 *
 	 * @return Response
 	 */
-    public function index()
+    public function index($category)
     {
-        $posts = $this->menuRepo->search(Input::all(), BaseRepo::PAGINATE, 'published_at', 'desc');
-        $category = $this->menuCategoryRepo->lists('titulo', 'id');
+        $posts = Menu::whereMenuCategoryId($category)->orderBy('titulo', 'asc')->paginate();
+        $category = $this->menuCategoryRepo->findOrFail($category);
+        
         return View::make('admin.menus.list', compact('posts', 'category'));
     }
 
@@ -44,11 +46,11 @@ class AdminMenusController extends \BaseController {
      *
      * @return Response
      */
-    public function create()
+    public function create($category)
     {
-        $category = $this->menuCategoryRepo->all()->lists('titulo', 'id');
-        $selected = [];
-        return View::make('admin.menus.create', compact('category', 'selected'));
+        $category = $this->menuCategoryRepo->findOrFail($category);
+        
+        return View::make('admin.menus.create', compact('category'));
     }
 
 
@@ -57,7 +59,7 @@ class AdminMenusController extends \BaseController {
      *
      * @return Response
      */
-    public function store()
+    public function store($category)
     {
         $data = Input::all();
 
@@ -74,7 +76,6 @@ class AdminMenusController extends \BaseController {
 
             //VARIABLES
             $titulo = Input::get('titulo');
-            $categoria = Input::get('categoria');
 
             //CONVERTIR TITULO A URL$union_tags
             $slug_url = \Str::slug($titulo);
@@ -82,14 +83,14 @@ class AdminMenusController extends \BaseController {
             //GUARDAR DATOS
             $post = new Menu($data);
             $post->slug_url = $slug_url;
-            $post->menu_category_id = $categoria;
+            $post->menu_category_id = $category;
             $post->imagen = $file;
             $post->imagen_carpeta = $ruta_fecha;
             $post->user_id = Auth::user()->id;
             $this->menuRepo->create($post, $data);
 
             //REDIRECCIONAR A PAGINA PARA VER DATOS
-            return Redirect::route('administrador.menus.index');
+            return Redirect::route('administrador.menus.index', $category);
         }
         else
         {
@@ -118,10 +119,9 @@ class AdminMenusController extends \BaseController {
      * @param  int  $id
      * @return Response
      */
-    public function edit($id)
+    public function edit($category, $id)
     {
-        $post = $this->menuRepo->findOrFail($id);
-        $category = $this->menuCategoryRepo->all()->lists('titulo', 'id');
+        $post = Menu::findOrFail($id);
 
         return View::make('admin.menus.edit', compact('post', 'category'));
     }
@@ -133,11 +133,11 @@ class AdminMenusController extends \BaseController {
      * @param  int  $id
      * @return Response
      */
-    public function update($id)
+    public function update($category, $id)
     {
         $post = $this->menuRepo->findOrFail($id);
 
-        $data = Input::only(['titulo','descripcion','contenido','published_at','publicar']);
+        $data = Input::only(['titulo','descripcion','precio','publicar']);
 
         $validator = Validator::make($data, $this->rules);
 
@@ -145,8 +145,6 @@ class AdminMenusController extends \BaseController {
         {
             //VARIABLES
             $titulo = Input::get('titulo');
-            $video = Input::get('video');
-            $categoria = Input::get('categoria');
 
             //CONVERTIR TITULO A URL
             $slug_url = \Str::slug($titulo);
@@ -164,23 +162,16 @@ class AdminMenusController extends \BaseController {
                 $imagen_carpeta = Input::get('imagen_actual_carpeta');
             }
 
-            //TAGS
-            $tags=Input::get('tags');
-            if($tags==""){ $union_tags=0; }
-            elseif($tags<>""){ $union_tags=implode(",", $tags);}
-
             //GUARDAR DATOS
             $post->imagen = $imagen;
             $post->imagen_carpeta = $imagen_carpeta;
-            $post->video = $video;
-            $post->category_id = $categoria;
-            $post->tags = '0,'.$union_tags.',0';
+            $post->menu_category_id = $category;
             $post->slug_url = $slug_url;
             $post->user_id = Auth::user()->id;
             $this->menuRepo->update($post,$data);
 
             //REDIRECCIONAR A PAGINA PARA VER DATOS
-            return Redirect::route('administrador.menus.index');
+            return Redirect::route('administrador.menus.index', $category);
         }
         else
         {
@@ -195,9 +186,21 @@ class AdminMenusController extends \BaseController {
      * @param  int  $id
      * @return Response
      */
-    public function destroy($id)
+    public function destroy($category, $id)
     {
-        //
+        $post = Menu::find($id);
+        $post->delete();
+
+        $message = 'El registro se eliminó satisfactoriamente.';
+
+        if(Request::ajax())
+        {
+            return Response::json([
+                'message' => $message
+            ]);
+        }
+
+        return Redirect::route('administrador.menus.index', $category);
     }
 
 }

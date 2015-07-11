@@ -1,11 +1,5 @@
 @extends('layouts.admin')
 
-{{-- Page title --}}
-@section('title')
-Advanced Data Tables
-@parent
-@stop
-
 {{-- page level styles --}}
 @section('header_styles')
 <!--page level css -->
@@ -26,6 +20,11 @@ Advanced Data Tables
         <span class="glyphicon glyphicon-plus"></span>
         Agregar nuevo registro
     </a>
+
+    <a href="{{ route('administrador.menus_categories.order') }}" class="btn btn-md btn-default">
+        <span class="glyphicon glyphicon-move"></span>
+        Ordenar
+    </a>
 </section>
 <!--section ends-->
 <section class="content">
@@ -37,7 +36,6 @@ Advanced Data Tables
                     <table class="table table-striped table-responsive">
                         <thead>
                             <tr>
-
                                 <th>Titulo</th>
                                 <th>Menú</th>
                                 <th>Publicar</th>
@@ -48,7 +46,7 @@ Advanced Data Tables
                             @foreach($categories as $item)
                             <tr>
                                 <td>{{ $item->titulo }}</td>
-                                <td><a href="{{ route('administrador.menu.index') }}?category={{ $item->id }}">Menú</a></td>
+                                <td><a href="{{ route('administrador.menus.index', $item->id) }}">Ver</a></td>
                                 <td>{{ $item->publicar ? 'Publicado' : 'No publicado' }}</td>
                                 <td>
                                     <div class="button-dropdown" data-buttons="dropdown">
@@ -57,9 +55,7 @@ Advanced Data Tables
                                             <i class="fa fa-caret-down"></i>
                                         </a>
                                         <ul>
-                                            <li><a href="{{ route('administrador.menus_categories.show', $item->id) }}">Ver</a></li>
                                             <li><a href="{{ route('administrador.menus_categories.edit', $item->id) }}">Editar</a></li>
-                                            <li><a href="{{ route('administrador.menus_categories.destroy', $item->id) }}">Eliminar</a></li>
                                         </ul>
                                     </div>
                                 </td>
