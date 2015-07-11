@@ -88,7 +88,19 @@
                                 <span class="fa arrow"></span>
                             </a>
                             <ul class="sub-menu">
-                                <li {{ (Request::is('administrador/staff') ? 'class="active"' : '') }}>
+                                <li {{ (Request::is('administrador/about/nosotros') ? 'class="active"' : '') }}>
+                                    <a href="{{ route('administrador.about.nosotros') }}">
+                                        <i class="fa fa-angle-double-right"></i>
+                                        Quienes Somos
+                                    </a>
+                                </li>
+                                <li {{ (Request::is('administrador/about/misvis') ? 'class="active"' : '') }}>
+                                    <a href="{{ route('administrador.about.misvis') }}">
+                                        <i class="fa fa-angle-double-right"></i>
+                                        Misión y Visión
+                                    </a>
+                                </li>
+                                <li {{ (Request::is('administrador/staff*') ? 'class="active"' : '') }}>
                                     <a href="{{ route('administrador.staff.index') }}">
                                         <i class="fa fa-angle-double-right"></i>
                                         Staff
@@ -98,30 +110,9 @@
                         </li>
 
                         <li {{ (Request::is('administrador/menus*') ? 'class="active"' : '') }}>
-                            <a href="#">
-                                <span class="title">Menú</span>
-                                <span class="fa arrow"></span>
+                            <a href="{{ route('administrador.menus.index') }}">
+                                <span class="title">Menús</span>
                             </a>
-                            <ul class="sub-menu">
-                                <li {{ (Request::is('administrador/menus') ? 'class="active"' : '') }}>
-                                    <a href="{{ route('administrador.menus.index') }}">
-                                        <i class="fa fa-angle-double-right"></i>
-                                        Todos los menús
-                                    </a>
-                                </li>
-                                <li {{ (Request::is('administrador/menus/create') ? 'class="active"' : '') }}>
-                                    <a href="{{ route('administrador.menus.create') }}">
-                                        <i class="fa fa-angle-double-right"></i>
-                                        Nuevo menú
-                                    </a>
-                                </li>
-                                <li {{ (Request::is('administrador/menus_categories*') ? 'class="active"' : '') }}>
-                                    <a href="{{ route('administrador.menus_categories.index') }}">
-                                        <i class="fa fa-angle-double-right"></i>
-                                        Categorías
-                                    </a>
-                                </li>
-                            </ul>
                         </li>
 
                         <li {{ (Request::is('administrador/phrases*') ? 'class="active"' : '') }}>
