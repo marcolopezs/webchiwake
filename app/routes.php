@@ -44,11 +44,16 @@ Route::group(['before' => 'guest'], function () {
 //SI EL USUARIO ESTA CONECTADO MOSTRAR
 Route::group(['before' => 'auth'], function () {
 
+    //NOSOTROS
+    Route::get('administrador/about/nosotros', ['as' => 'administrador.about.nosotros', 'uses' => 'AdminAboutController@nosotros']);
+    Route::put('administrador/about/nosotros', ['as' => 'administrador.about.nosotrosUpdate', 'uses' => 'AdminAboutController@nosotrosUpdate']);
+    Route::get('administrador/about/misvis', ['as' => 'administrador.about.misvis', 'uses' => 'AdminAboutController@misvis']);
+    Route::put('administrador/about/misvis', ['as' => 'administrador.about.misvisUpdate', 'uses' => 'AdminAboutController@misvisUpdate']);
+    
     //STAFF
     Route::resource('administrador/staff', 'AdminStaffController');
-
-    //PAGINAS
-    Route::resource('administrador/pages', 'AdminPagesController');
+    Route::get('administrador/staff-order', ['as' => 'administrador.staff.order', 'uses' => 'AdminStaffController@order']);
+    Route::post('administrador/staff-order/order', ['as' => 'administrador.staff.orderForm', 'uses' => 'AdminStaffController@orderForm' ]);
 
     //MENUS
     Route::resource('administrador/menus', 'AdminMenusController');
@@ -56,33 +61,14 @@ Route::group(['before' => 'auth'], function () {
     //CATEGORIAS DE MENUS
     Route::resource('administrador/menus_categories', 'AdminMenuCategoriesController');
 
-    //TAGS DE POST
-    Route::resource('administrador/tags', 'AdminTagsController');
-
-    //GALERIA DE FOTOS
-    Route::resource('administrador/gallery', 'AdminGalleriesController');
-
-    //FOTOS DE GALERIA
-    Route::get('administrador/gallery/photos/{gallery}', ['as' => 'administrador.gallery.photoslist', 'uses' => 'AdminGalleriesController@photosList' ]);
-    Route::get('administrador/gallery/photos/{gallery}/upload', ['as' => 'administrador.gallery.photosupload', 'uses' => 'AdminGalleriesController@photosUpload' ]);
-    Route::post('administrador/gallery/photos/{gallery}/upload', ['as' => 'administrador.gallery.photosuploadsave', 'uses' => 'AdminGalleriesController@photosUploadSave' ]);
-
     //FRASES
     Route::resource('administrador/phrases', 'AdminPhrasesController');
 
     //SLIDERS
     Route::resource('administrador/slider', 'AdminSlidersController');
-    //Route::post('administrador/slider/upload', ['as' => 'administrador.slider.photosuploadsave', 'uses' => 'AdminSlidersController@photosUploadSave' ]);
 
     //CONFIGURACIÓN
     Route::resource('administrador/config', 'AdminConfigsController');
-
-    //MENU
-    Route::resource('administrador/menu', 'AdminMenusController');
-    Route::post('administrador/menu/category', ['as' => 'administrador.menu.category', 'uses' => 'AdminMenusController@category' ]);
-    Route::post('administrador/menu/page', ['as' => 'administrador.menu.page', 'uses' => 'AdminMenusController@page' ]);
-    Route::post('administrador/menu/link', ['as' => 'administrador.menu.link', 'uses' => 'AdminMenusController@link' ]);
-    Route::post('administrador/menu/order', ['as' => 'administrador.menu.order', 'uses' => 'AdminMenusController@order' ]);
 
     //USUARIO
     Route::resource('administrador/users', 'AdminUsersController');
