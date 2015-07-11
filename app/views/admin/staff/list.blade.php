@@ -15,6 +15,8 @@ Advanced Data Tables
 {{ HTML::style('admin/css/pages/tables.css') }}
 {{ HTML::style('admin/vendors/Buttons-master/css/buttons.css') }}
 <!--end of page level css-->
+
+{{ HTML::style('//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css') }}
 @stop
 
 {{-- Page content --}}
@@ -26,6 +28,13 @@ Advanced Data Tables
         <span class="glyphicon glyphicon-plus"></span>
         Agregar nuevo registro
     </a>
+
+    <a href="{{ route('administrador.staff.order') }}" class="btn btn-md btn-default">
+        <span class="glyphicon glyphicon-move"></span>
+        Ordenar
+    </a>
+
+    <div class="alert alert-dismissable"></div>
 </section>
 <!--section ends-->
 <section class="content">
@@ -46,7 +55,7 @@ Advanced Data Tables
                         </thead>
                         <tbody>
                             @foreach($posts as $item)
-                            <tr>
+                            <tr data-id="{{ $item->id }}" data-title="{{ $item->titulo }}">
                                 <td>{{ $item->nombre }}</td>
                                 <td>{{ $item->cargo }}</td>
                                 <td>{{ $item->publicar ? 'Publicado' : 'No publicado' }}</td>
@@ -59,7 +68,7 @@ Advanced Data Tables
                                         <ul>
                                             <li><a href="{{ route('administrador.staff.show', $item->id) }}">Ver</a></li>
                                             <li><a href="{{ route('administrador.staff.edit', $item->id) }}">Editar</a></li>
-                                            <li><a href="{{ route('administrador.staff.destroy', $item->id) }}">Eliminar</a></li>
+                                            <li><a href="#" class="btn-delete">Eliminar</a></li>
                                         </ul>
                                     </div>
                                 </td>
@@ -88,18 +97,62 @@ Advanced Data Tables
     </div>
 
 </section>
+
+<div id="dialog-confirm" title="Eliminar registro">
+  <p>¿Desea eliminar el registro?</p>
+  <div class="title"></div>
+</div>
+
+{{ Form::open(['route' => ['administrador.staff.destroy', ':REGISTER'], 'method' => 'DELETE', 'id' => 'FormDeleteRow']) }}
+{{ Form::close() }}
 @stop
 
 {{-- page level scripts --}}
 @section('footer_scripts')
 <!-- begining of page level js -->
-{{ HTML::script('admin/vendors/datatables/jquery.dataTables.min.js') }}
-{{ HTML::script('admin/vendors/datatables/dataTables.tableTools.min.js') }}
-{{ HTML::script('admin/vendors/datatables/dataTables.colReorder.min.js') }}
-{{ HTML::script('admin/vendors/datatables/dataTables.scroller.min.js') }}
-{{ HTML::script('admin/vendors/datatables/dataTables.bootstrap.js') }}
-{{ HTML::script('admin/js/pages/table-advanced.js') }}
 {{ HTML::script('admin/vendors/Buttons-master/js/vendor/scrollto.js') }}
 {{ HTML::script('admin/vendors/Buttons-master/js/main.js') }}
 {{ HTML::script('admin/vendors/Buttons-master/js/buttons.js') }}
+
+<script>
+$(document).on("ready", function(){
+    $('.alert').hide();
+    $("#dialog-confirm").hide();
+
+    $(".btn-delete").on("click", function(){
+        var row = $(this).parents("tr");
+        var id = row.data("id");
+        var title = row.data("title");
+        var form = $("#FormDeleteRow");
+        var url = form.attr("action").replace(':REGISTER', id);
+        var data = form.serialize();
+
+        $("#dialog-confirm .title").text(title);
+
+        $( "#dialog-confirm" ).dialog({
+            resizable: true,
+            height: 250,
+            modal: false,
+            buttons: {
+                "Borrar registro": function() {
+                    row.fadeOut();
+
+                    $.post(url, data, function(result){
+                        $(".alert").show().removeClass('alert-danger').addClass('alert-success').text(result.message);
+                    }).fail(function(){
+                        $(".alert").show().removeClass('alert-success').addClass('alert-danger').text("Se produjo un error al eliminar el registro");
+                        row.show();
+                    });
+
+                    $(this).dialog("close");
+                },
+                Cancel: function() {
+                    $(this).dialog("close");
+                }
+            }
+        });
+    });
+});
+
+</script>
 @stop

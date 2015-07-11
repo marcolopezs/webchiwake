@@ -10,14 +10,6 @@ Agregar nuevo registro
 @section('header_styles')
 {{ HTML::style('admin/vendors/jasny-bootstrap/css/jasny-bootstrap.css') }}
 {{ HTML::style('admin/css/pages/form_layouts.css') }}
-
-{{-- DATETIME PICKER --}}
-{{ HTML::style('admin/vendors/datetimepicker/css/bootstrap-datetimepicker.min.css') }}
-
-{{-- TAGS --}}
-{{ HTML::style('admin/vendors/tags/bower_components/bootstrap/assets/css/docs.css') }}
-{{ HTML::style('admin/vendors/tags/dist/bootstrap-tagsinput.css') }}
-{{ HTML::style('admin/vendors/tags/assets/app.css') }}
 @stop
 
 
@@ -41,11 +33,19 @@ Agregar nuevo registro
                 <div class="panel-body border">
                     {{ Form::open(['route' => 'administrador.staff.store', 'method' => 'POST', 'class' => 'form-horizontal form-bordered', 'files' => 'true']) }}
 
-                        <div class="form-group @if($errors->has('titulo')) has-error @endif">
-                            {{ Form::label('titulo', 'Titulo', ['class' => 'col-md-3 control-label']) }}
+                        <div class="form-group @if($errors->has('nombre')) has-error @endif">
+                            {{ Form::label('nombre', 'Nombre', ['class' => 'col-md-3 control-label']) }}
                             <div class="col-md-9">
-                                {{ Form::text('titulo', null, ['class' => 'form-control']) }}
-                                {{ $errors->first('titulo', '<span class="help-block">:message</span>') }}
+                                {{ Form::text('nombre', null, ['class' => 'form-control']) }}
+                                {{ $errors->first('nombre', '<span class="help-block">:message</span>') }}
+                            </div>
+                        </div>
+
+                        <div class="form-group @if($errors->has('cargo')) has-error @endif">
+                            {{ Form::label('cargo', 'Cargo', ['class' => 'col-md-3 control-label']) }}
+                            <div class="col-md-9">
+                                {{ Form::text('cargo', null, ['class' => 'form-control']) }}
+                                {{ $errors->first('cargo', '<span class="help-block">:message</span>') }}
                             </div>
                         </div>
 
@@ -105,28 +105,4 @@ Agregar nuevo registro
     </div>
     <!--main content ends-->
 </section>
-@stop
-
-{{-- page level scripts --}}
-@section('footer_scripts')
-{{ HTML::script('admin/vendors/ckeditor/ckeditor.js') }}
-{{ HTML::script('admin/vendors/ckeditor/adapters/jquery.js') }}
-{{ HTML::script('admin/js/pages/editor.js') }}
-
-{{-- DATETIME PICKER --}}
-{{ HTML::script('admin/vendors/datetimepicker/js/bootstrap-datetimepicker.js') }}
-<script>
-$(".form_datetime4").datetimepicker({
-      format: "dd MM yyyy - hh:ii",
-      linkField: "mirror_field",
-      linkFormat: "yyyy-mm-dd hh:ii:00"
-});
-</script>
-
-{{-- TAGS --}}
-{{ HTML::script('admin/js/forms/jquery.tagsinput.min.js') }}
-{{ HTML::script('admin/js/forms/jquery.select2.min.js') }}
-<script>
-$(".selectMultiple").select2();
-</script>
 @stop

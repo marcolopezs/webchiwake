@@ -18,8 +18,11 @@ class CreateStaffTable extends Migration {
             
             $table->string('nombre', 100);
             $table->string('cargo', 100);
+            $table->string('imagen');
+            $table->string('imagen_carpeta');
             $table->text('descripcion');
             $table->boolean('publicar');
+            $table->boolean('orden');
             
 			$table->timestamps();
 		});

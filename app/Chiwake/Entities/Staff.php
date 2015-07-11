@@ -2,11 +2,6 @@
 
 class Staff extends BaseEntity{
 
-    protected $fillable = [];
+    protected $fillable = ['nombre', 'cargo', 'descripcion', 'publicar'];
 
-    public function user()
-    {
-        return $this->belongsTo('User', 'user_id');
-    }
-
-} 
+}

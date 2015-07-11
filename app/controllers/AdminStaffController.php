@@ -7,11 +7,10 @@ use Chiwake\Repositories\StaffRepo;
 class AdminStaffController extends \BaseController {
 
     protected $rules = [
-        'titulo' => 'required',
+        'nombre' => 'required',
+        'cargo' => 'required',
         'descripcion' => 'required|min:10|max:255',
-        'precio' => 'required',
         'imagen' => 'mimes:jpeg,jpg,png',
-        'categoria' => '',
         'publicar' => 'required|in:1,0'
     ];
 
@@ -29,7 +28,7 @@ class AdminStaffController extends \BaseController {
 	 */
     public function index()
     {
-        $posts = $this->staffRepo->search(Input::all(), BaseRepo::PAGINATE, 'nombre', 'asc');
+        $posts = $this->staffRepo->search(Input::all(), BaseRepo::PAGINATE, 'orden', 'asc');
         return View::make('admin.staff.list', compact('posts', 'category'));
     }
 
@@ -61,24 +60,14 @@ class AdminStaffController extends \BaseController {
             //CREAR CARPETA CON FECHA Y MOVER IMAGEN
             CrearCarpeta();
             $ruta = "upload/".FechaCarpeta();
-            $ruta_fecha = FechaCarpeta();
             $archivo = Input::file('imagen');
-            $file = FileMove($archivo,$ruta);
-
-            //VARIABLES
-            $titulo = Input::get('titulo');
-            $categoria = Input::get('categoria');
-
-            //CONVERTIR TITULO A URL$union_tags
-            $slug_url = \Str::slug($titulo);
+            $imagen = FileMove($archivo,$ruta);
+            $imagen_carpeta = FechaCarpeta();
 
             //GUARDAR DATOS
-            $post = new Menu($data);
-            $post->slug_url = $slug_url;
-            $post->menu_category_id = $categoria;
-            $post->imagen = $file;
-            $post->imagen_carpeta = $ruta_fecha;
-            $post->user_id = Auth::user()->id;
+            $post = new Staff($data);
+            $post->imagen = $imagen;
+            $post->imagen_carpeta = $imagen_carpeta;
             $this->staffRepo->create($post, $data);
 
             //REDIRECCIONAR A PAGINA PARA VER DATOS
@@ -114,14 +103,8 @@ class AdminStaffController extends \BaseController {
     public function edit($id)
     {
         $post = $this->staffRepo->findOrFail($id);
-        $category = $this->menuCategoryRepo->all()->lists('titulo', 'id');
 
-        $tags = $this->tagRepo->all();
-        $tags_select = $post->tags;
-        $tags_select = explode(",", $tags_select);
-        $tags_select = $this->tagRepo->findOrFail($tags_select);
-
-        return View::make('admin.staff.edit', compact('post', 'category', 'tags', 'tags_select'));
+        return View::make('admin.staff.edit', compact('post'));
     }
 
 
@@ -135,46 +118,27 @@ class AdminStaffController extends \BaseController {
     {
         $post = $this->staffRepo->findOrFail($id);
 
-        $data = Input::only(['titulo','descripcion','contenido','published_at','publicar']);
+        $data = Input::only(['nombre','cargo','descripcion','imagen','publicar']);
 
         $validator = Validator::make($data, $this->rules);
 
         if($validator->passes())
         {
-            //VARIABLES
-            $titulo = Input::get('titulo');
-            $video = Input::get('video');
-            $categoria = Input::get('categoria');
-
-            //CONVERTIR TITULO A URL
-            $slug_url = \Str::slug($titulo);
-
             //VERIFICAR SI SUBIO IMAGEN
             if(Input::hasFile('imagen')){
                 CrearCarpeta();
                 $ruta = "upload/".FechaCarpeta();
                 $archivo = Input::file('imagen');
-                $file = FileMove($archivo,$ruta);
-                $imagen = $file;
+                $imagen = FileMove($archivo,$ruta);
                 $imagen_carpeta = FechaCarpeta();
             }else{
                 $imagen = Input::get('imagen_actual');
                 $imagen_carpeta = Input::get('imagen_actual_carpeta');
             }
 
-            //TAGS
-            $tags=Input::get('tags');
-            if($tags==""){ $union_tags=0; }
-            elseif($tags<>""){ $union_tags=implode(",", $tags);}
-
             //GUARDAR DATOS
             $post->imagen = $imagen;
             $post->imagen_carpeta = $imagen_carpeta;
-            $post->video = $video;
-            $post->category_id = $categoria;
-            $post->tags = '0,'.$union_tags.',0';
-            $post->slug_url = $slug_url;
-            $post->user_id = Auth::user()->id;
             $this->staffRepo->update($post,$data);
 
             //REDIRECCIONAR A PAGINA PARA VER DATOS
@@ -194,8 +158,46 @@ class AdminStaffController extends \BaseController {
      * @return Response
      */
     public function destroy($id)
+    { 
+        $post = Staff::find($id);
+        $post->delete();       
+
+        $message = 'El registro se eliminó satisfactoriamente.';
+
+        if(Request::ajax())
+        {
+            return Response::json([
+                'message' => $message
+            ]);
+        }
+
+        return Redirect::route('administrador.posts.index');
+    }
+
+
+    public function order()
     {
-        //
+        $photos = Staff::orderBy('orden', 'asc')->get();
+        return View::make('admin.staff.order', compact('photos'));
+    }
+
+    public function orderForm()
+    {
+        if(Request::ajax())
+        {
+            $sortedval = $_POST['listPhoto'];
+            try{
+                foreach ($sortedval as $key => $sort){
+                    $sortPhoto = Staff::find($sort);
+                    $sortPhoto->orden = $key;
+                    $sortPhoto->save();
+                }
+            }
+            catch (Exception $e)
+            {
+                return 'false';
+            }
+        }
     }
 
 }
