@@ -123,12 +123,7 @@ class AdminMenusController extends \BaseController {
         $post = $this->menuRepo->findOrFail($id);
         $category = $this->menuCategoryRepo->all()->lists('titulo', 'id');
 
-        $tags = $this->tagRepo->all();
-        $tags_select = $post->tags;
-        $tags_select = explode(",", $tags_select);
-        $tags_select = $this->tagRepo->findOrFail($tags_select);
-
-        return View::make('admin.menus.edit', compact('post', 'category', 'tags', 'tags_select'));
+        return View::make('admin.menus.edit', compact('post', 'category'));
     }
 
 

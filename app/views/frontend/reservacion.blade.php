@@ -2,7 +2,7 @@
 
 @section('script_header')
 
-    <!-- SMARTFORM -->
+    {{-- SMARTFORM --}}
     <link rel="stylesheet" type="text/css"  href="libs/smartform/css/smart-forms.css">
     <link rel="stylesheet" type="text/css"  href="libs/smartform/css/smart-addons.css">
     <link rel="stylesheet" type="text/css"  href="libs/smartform/css/font-awesome.min.css">
@@ -11,16 +11,16 @@
 
 @section('contenido_frontend')
 
-    <!-- SUB BANNER -->
+    {{-- SUB BANNER --}}
     <section class="sub-banner text-center section">
         <div class="awe-parallax bg-4"></div>
         <div class="awe-title awe-title-3">
             <h3 class="lg text-uppercase">Reservación</h3>
         </div>
     </section>
-    <!-- END / SUB BANNER -->
+    {{-- END / SUB BANNER --}}
 
-    <!-- RESERVATION -->
+    {{-- RESERVATION --}}
     <section class="reservation section pd">
         <div class="divider divider-2"></div>
         <div class="reservation-content">
@@ -84,7 +84,7 @@
                                     <label class="field-icon"><i class="fa fa-calendar"></i></label>  
                                 </label>
                                 {{ $errors->first('fecha', '<em for="fecha" class="state-error">:message</em>') }}
-                            </div><!-- end section -->
+                            </div>{{-- end section --}}
 
                             <div class="section colm colm4">
                                 <label for="hora" class="field-label">Hora</label>
@@ -93,7 +93,7 @@
                                     <label class="field-icon"><i class="fa fa-clock-o"></i></label>  
                                 </label>
                                 {{ $errors->first('hora', '<em for="hora" class="state-error">:message</em>') }}
-                            </div><!-- end section -->
+                            </div>{{-- end section --}}
 
                             <div class="section colm colm4">
                                 <label for="personas" class="field-label">Personas</label>
@@ -101,17 +101,17 @@
                                     {{ Form::text('personas', 1, ['class' => 'gui-input', 'id' => 'personas']) }}
                                 </label>
                                 {{ $errors->first('personas', '<em for="personas" class="state-error">:message</em>') }}
-                            </div><!-- end section -->
+                            </div>{{-- end section --}}
 
-                        </div><!-- end .frm-row section -->
+                        </div>{{-- end .frm-row section --}}
 
-                        <div class="result">{{ $mensaje }}</div><!-- end .result  section -->
+                        <div class="result">{{ $mensaje }}</div>{{-- end .result  section --}}
                         
-                    </div><!-- end .form-body section -->
+                    </div>{{-- end .form-body section --}}
 
                     <div class="form-footer">
                         <button type="submit" class="awe-btn awe-btn-2 awe-btn-default text-uppercase"> Reservar </button>
-                    </div><!-- end .form-footer section -->
+                    </div>{{-- end .form-footer section --}}
 
                 {{ Form::close() }}
 
@@ -119,17 +119,17 @@
 
         </div>
     </section>
-    <!-- END / RESERVATION -->
+    {{-- END / RESERVATION --}}
 
-    <!-- TESTIMONIAL -->
+    {{-- TESTIMONIAL --}}
     <section id="testimonial" class="testimonial testimonial-1 section">
-        <!-- BACKGROUND -->
+        {{-- BACKGROUND --}}
         <div class="awe-parallax bg-6"></div>
-        <!-- END / BACKGROUND -->
+        {{-- END / BACKGROUND --}}
 
-        <!-- OVERLAY -->
+        {{-- OVERLAY --}}
         <div class="awe-overlay"></div>
-        <!-- END / OVERLAY -->
+        {{-- END / OVERLAY --}}
 
         <div class="container">
             <div class="testimonial-content">
@@ -147,26 +147,24 @@
             </div>
         </div>
     </section>
-    <!-- END / TESTIMONIAL -->
+    {{-- END / TESTIMONIAL --}}
 
 @stop
 
 
 @section('script_footer')
 
-    <!-- SMARTFORM -->
-    <script type="text/javascript" src="libs/smartform/js/jquery-ui-1.10.4.custom.min.js"></script>
+    {{-- SMARTFORM --}}
+    <script src="libs/smartform/js/jquery-ui-1.10.4.custom.min.js"></script>
 
-    <script type="text/javascript" src="libs/smartform/js/jquery.form.min.js"></script>
-    <script type="text/javascript" src="libs/smartform/js/jquery.validate.min.js"></script>
-    <script type="text/javascript" src="libs/smartform/js/additional-methods.min.js"></script>
-    <script type="text/javascript" src="libs/smartform/js/jquery-ui-timepicker.min.js"></script>
-    <script type="text/javascript" src="libs/smartform/js/jquery-ui-touch-punch.min.js"></script>
-    <script type="text/javascript" src="libs/smartform/js/jquery.stepper.min.js"></script>
+    <script src="libs/smartform/js/jquery.form.min.js"></script>
+    <script src="libs/smartform/js/jquery.validate.min.js"></script>
+    <script src="libs/smartform/js/additional-methods.min.js"></script>
+    <script src="libs/smartform/js/jquery-ui-timepicker.min.js"></script>
+    <script src="libs/smartform/js/jquery-ui-touch-punch.min.js"></script>
+    <script src="libs/smartform/js/jquery.stepper.min.js"></script>
 
-
-    <script type="text/javascript">
-
+    <script>
     $(function() {
 
         $('#hora').timepicker({
@@ -192,8 +190,7 @@
             limit: [1, 100]
         });
 
-    });             
-
+    });
     </script>
 
 @stop
