@@ -30,7 +30,7 @@
                 <h2 class="lg text-capitalize">Chiwake</h2>
                 <i class="icon awe_quote_right"></i>
             </div>
-            <p>Somos personas que engrien personas. Desde nuestro primer colaborador hasta el más distinguido cliente tiene que sentirse engreído. Nos preocupamos porque todos, absolutamente todos, nos beneficiemos de pertenecer a Chiwake. <br/> Chiwake es una familia que como tal se preocupa por su casa y por los que la habitan.</p>
+            {{ $about->about }}
             <a href="nosotros" class="awe-btn awe-btn-2 awe-btn-default text-uppercase">Nosotros</a>
         </div>
     </div>
@@ -191,22 +191,22 @@
         <div class="tb-cell">
             <div class="contact-form contact-form-1">
                 <div class="inner wow fadeInUp" data-wow-delay=".3s">
-                    <form id="send-message-form" action="processContact.php" method="post">
+                    {{ Form::open(['route' => 'front.contacto.form', 'method' => 'POST', 'id' => 'formContacto']) }}
                         <div class="form-item form-textarea">
-                            <textarea placeholder="Mensaje" name="message"></textarea>
+                            {{ Form::textarea('mensaje', null, ['placeholder' => 'Mensaje']) }}
                         </div>
                         <div class="form-item form-type-name">
-                            <input type="text" placeholder="Nombre" name="name">
+                            {{ Form::text('nombre', null, ['placeholder' => 'Nombre']) }}
                         </div>
                         <div class="form-item form-type-email">
-                            <input type="text" placeholder="Email" name="email">
+                            {{ Form::text('email', null, ['placeholder' => 'Email']) }}
                         </div>
                         <div class="clearfix"></div>
                         <div class="form-actions text-center">
-                            <input type="submit" value="Enviar mensaje" class="contact-submit awe-btn awe-btn-6 awe-btn-default text-uppercase">
+                            <a id="formContactoSubmit" href="#" class="contact-submit awe-btn awe-btn-6 awe-btn-default text-uppercase">Enviar mensaje</a>
                         </div>
                         <div id="contact-content"></div>
-                    </form>
+                    {{ Form::close() }}
                 </div>
             </div>
         </div>
@@ -220,14 +220,14 @@
                         <h4 class="sm text-uppercase">RECIBE NOTICIAS DE NOSOTROS</h4>
                         <p>Doner filet mignon bacon corned beef rump, frankfurter sirloin</p>
                     </div>
-                    <form>
+                    {{ Form::open(['method' => 'POST']) }}
                         <div class="form-item">
                             <input type="text" placeholder="Email" class="text-uppercase" name="email">
                         </div>
                         <div class="form-actions">
                             <input type="submit" value="Suscribete" class="awe-btn awe-btn-2 awe-btn-default text-uppercase">
                         </div>
-                    </form>
+                    {{ Form::close() }}
                 </div>
             </div>
         </div>
@@ -237,5 +237,47 @@
 </section>
 
 <!-- END / CONTACT US -->
+
+@stop
+
+@section('script_footer')
+
+<script>
+    $(document).on("ready", function(){
+
+        $("#formContactoSubmit").on("click", function(e){
+
+            e.preventDefault();
+
+            var form = $("#formContacto");
+            var url = form.attr('action');
+            var data = form.serialize();
+
+            $.post(url, data, function(result){
+                $("#contact-content").text(result);
+            }).fail(function(result){
+                $("#contact-content").text("Se produjo un error al enviar el mensaje. Intentelo de nuevo más tarde.");
+
+                if(result.status === 422){
+
+                    var errors = result.responseJSON;
+
+                    errorsHtml = '<div class="alert alert-danger"><ul>';
+                    $.each( errors, function( key, value ) {
+                        errorsHtml += '<li>' + value[0] + '</li>';
+                    });
+                    errorsHtml += '</ul></di>';
+
+                    //$('.mensaje').show();
+                    $('#contact-content').html(errorsHtml);
+
+                };
+
+            });
+
+        });
+
+    });
+</script>
 
 @stop

@@ -18,7 +18,10 @@ class FrontendController extends \BaseController {
         //FRASES
         $frases = Phrase::wherePublicar(1)->orderByRaw("RAND()")->get();
 
-		return View::make('frontend.home', compact('frases'));
+        //QUIENES SOMOS - MISION - VISION
+        $about = About::find(1);
+
+		return View::make('frontend.home', compact('frases', 'about'));
 	}
 
     public function nosotros()
@@ -127,14 +130,17 @@ class FrontendController extends \BaseController {
                 $message->from($fromEmail, $fromNombre);
                 $message->subject('Chiwake - Contacto');
             });
-
-            $mensaje = '<div class="alert notification alert-success">Tu mensaje ha sido enviado.</div>';
-
-            return View::make('frontend.contacto', compact('mensaje'));
         }
         else
         {
             return Redirect::back()->withInput()->withErrors($validator->messages());
+        }
+
+        $mensaje = 'Tu mensaje ha sido enviado.';
+
+        if(Request::ajax())
+        {
+            return $mensaje;
         }
     }
 
